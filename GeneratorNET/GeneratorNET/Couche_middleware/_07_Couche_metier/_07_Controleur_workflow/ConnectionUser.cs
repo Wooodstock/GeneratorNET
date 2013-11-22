@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Couche_middleware._07_Couche_metier._08_Composant_metier;
+using Common;
 
 namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
@@ -21,6 +21,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 					{
 						oSTG.Status_op = true;
 						oSTG.Info = "Connection réussie";
+						Console.WriteLine("Connexion réussie de l'utilisateur" + login);
 					}
 					else
 					{

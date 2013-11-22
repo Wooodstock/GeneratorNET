@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 using System.Collections;
 using System.Net.Security;
 
-namespace Couche_middleware._07_Couche_metier._08_Composant_metier
+namespace Common
 {
 	[ServiceContract]
 	public class STG
