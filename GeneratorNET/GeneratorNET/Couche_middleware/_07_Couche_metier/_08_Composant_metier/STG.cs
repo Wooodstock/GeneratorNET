@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Couche_middleware.Couche_middleware.Couche_metier.Composant_metier
+namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 {
 	class STG
 	{
