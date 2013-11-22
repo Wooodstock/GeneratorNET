@@ -16,7 +16,7 @@ namespace Couche_middleware._04_Composant_server
 
 		public STG connection(STG oSTG)
 		{
-
+			
 			return oSTG;
 		}
 	}
