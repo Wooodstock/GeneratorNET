@@ -35,14 +35,15 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>10436841E54BC93CB1A6B386BAAA335F5A225ED4</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>1AB724282D6F2B835B2A2E3B83009DE1D2A3AC52</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>GeneratorNETServer_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>key.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,7 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="GeneratorNETServer_1_TemporaryKey.pfx" />
+    <None Include="GeneratorNETServer_2_TemporaryKey.pfx" />
     <None Include="GeneratorNETServer_TemporaryKey.pfx" />
+    <None Include="key.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Couche_middleware\_05_Groupe_processus\" />

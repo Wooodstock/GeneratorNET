@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Couche_middleware._07_Couche_metier._08_Composant_metier;
 
 namespace Couche_middleware._04_Composant_server
 {
@@ -13,10 +14,10 @@ namespace Couche_middleware._04_Composant_server
 			(System.Security.Permissions.SecurityAction.Assert, Unrestricted = true)
 		]*/
 
-		public string test(string msg)
+		public STG connection(STG oSTG)
 		{
-			Console.WriteLine("test msg = " + msg);
-			return "ok";
+
+			return oSTG;
 		}
 	}
 }
