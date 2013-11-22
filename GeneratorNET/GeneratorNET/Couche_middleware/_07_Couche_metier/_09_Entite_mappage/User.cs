@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Couche_middleware.Couche_middleware._07_Couche_metier._09_Entite_mappage
+namespace Couche_middleware._07_Couche_metier._09_Entite_mappage
 {
     class User
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Couche_middleware.Couche_middleware._10_Composant_acces_donnees
+namespace Couche_middleware._10_Composant_acces_donnees
 {
     class CAD
     {
@@ -26,12 +26,20 @@ namespace Couche_middleware.Couche_middleware._10_Composant_acces_donnees
         private string database { get; set; }
         private string host { get; set; }
         private string password { get; set; }
+        private SqlConnection sqlConn;
 
         public void openConnection() {
-            SqlConnection myConnection = new SqlConnection("Database=wcf;Server=172.16.255.194\\SQLEXPRESS;Integrated Security=True;connect timeout = 30");
+            this.sqlConn = new SqlConnection(
+            "Persist Security Info=False;"+
+            "User ID=bertrand;"+
+            "Password=password;"+
+            "Initial Catalog=wcf;"+
+            "Server=172.16.255.194");
+            //Database=wcf;Server=172.16.255.194\\SQLEXPRESS;Integrated Security=True;connect timeout = 30");
             try
             {
-                myConnection.Open();
+                this.sqlConn.Open();
+                Console.WriteLine("Connection Succeed");
             }
             catch (Exception ex) {
                 Console.WriteLine("Connection failed : " + ex.Message);
@@ -39,6 +47,15 @@ namespace Couche_middleware.Couche_middleware._10_Composant_acces_donnees
         }
 
         public STG executeRQuery(STG oSTG) {
+            string query = "SELECT * FROM t_user;";
+            SqlCommand sqlCommand = new SqlCommand(query, this.sqlConn);
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                Console.WriteLine((string)sqlDataReader["use_login"]);
+            }
+            
             return oSTG;
         }
 
