@@ -5,64 +5,89 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Runtime.Serialization;
+using System.Collections;
+using System.Net.Security;
 
 namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 {
-	[DataContract]
-	class STG
-	{
-		[DataMember]
+	[ServiceContract]
+	public class STG
+	{		
 		private bool status_op;
 
+		[DataMember]
 		public bool Status_op
 		{
 			get { return status_op; }
 			set { status_op = value; }
 		}
 
-		[DataMember]
 		private string info;
 
+		[DataMember]
 		public string Info
 		{
 			get { return info; }
 			set { info = value; }
 		}
 
-		[DataMember]
 		private string operationname;
 
+		[DataMember]
 		public string Operationname
 		{
 			get { return operationname; }
 			set { operationname = value; }
 		}
 
-		[DataMember]
 		private string tokenApp;
 
+		[DataMember]
 		public string TokenApp
 		{
 			get { return tokenApp; }
 			set { tokenApp = value; }
 		}
 
-		[DataMember]
 		private string tokenUser;
 
+		[DataMember]
 		public string TokenUser
 		{
 			get { return tokenUser; }
 			set { tokenUser = value; }
 		}
 
-		[DataMember]
-		private Object[] data;
+		private Hashtable data;
 
-		public Object[] Data
+
+		public object GetData(string key)
 		{
-			get { return data; }
-			set { data = value; }
+			return this.data[key];
+		}
+
+
+		public void SetData(string key, object value)
+		{
+			if (this.data.ContainsKey(key))
+			{
+				this.data.Remove(key);
+				this.data.Add(key, value);
+			}
+			else
+			{
+				this.data.Add(key, value);
+			}
+		}
+
+		public STG()
+		{
+			this.status_op = false;
+			this.info = "";
+			this.operationname = "";
+			this.tokenApp = "";
+			this.tokenUser = "";
+			this.data = new Hashtable();
 		}
 
 	}

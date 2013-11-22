@@ -7,7 +7,7 @@
     <ProjectGuid>{8903FDAA-4ED5-4B9E-9403-97F718F540C6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Couche_middleware</RootNamespace>
+    <RootNamespace>GeneratorNET</RootNamespace>
     <AssemblyName>GeneratorNET</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,6 +54,10 @@
   <ItemGroup>
     <Compile Include="Couche_middleware\_04_Composant_server\Server.cs" />
     <Compile Include="Couche_middleware\_04_Composant_server\IServer.cs" />
+    <Compile Include="Couche_middleware\_05_Groupe_processus\GpcsDecrypt.cs" />
+    <Compile Include="Couche_middleware\_05_Groupe_processus\GpcsUser.cs" />
+    <Compile Include="Couche_middleware\_06_Composant_acces_metier\CAM.cs" />
+    <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\ConnectionUser.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_08_Composant_metier\STG.cs" />
     <Compile Include="Couche_middleware\Host.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,9 +70,6 @@
     <None Include="key.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Couche_middleware\_05_Groupe_processus\" />
-    <Folder Include="Couche_middleware\_06_Composant_acces_metier\" />
-    <Folder Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\" />
     <Folder Include="Couche_middleware\_07_Couche_metier\_09_Entite_mappage\" />
     <Folder Include="Couche_middleware\_10_Composant_acces_donnees\" />
   </ItemGroup>
