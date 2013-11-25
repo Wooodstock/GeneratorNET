@@ -91,8 +91,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.ImageLocation = "C:\\Users\\EMO_Kevin\\Documents\\Visual Studio 2012\\Projects\\Generator\\Generator_Name" +
-    ".png";
+            this.pictureBox1.ImageLocation = "C:\\Users\\EMO_Kevin\\Documents\\GeneratorNET\\Generator_Client\\Generator_Name.png";
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(756, 221);
