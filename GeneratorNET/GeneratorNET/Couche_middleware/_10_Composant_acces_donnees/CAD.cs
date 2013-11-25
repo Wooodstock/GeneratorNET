@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Couche_middleware._07_Couche_metier._08_Composant_metier;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -46,20 +46,30 @@ namespace Couche_middleware._10_Composant_acces_donnees
         }
 
         public STG executeRQuery(STG oSTG) {
-            string query = "SELECT * FROM t_user;";
-            SqlCommand sqlCommand = new SqlCommand(query, this.sqlConn);
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
-            while (sqlDataReader.Read())
+            if (oSTG.GetData("query") != null)
             {
-                Console.WriteLine((string)sqlDataReader["use_login"]);
+                SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                oSTG.SetData("sqldatareader", sqlDataReader);
             }
             
             return oSTG;
         }
 
         public STG executeCUDQuery(STG oSTG) {
+            if (oSTG.GetData("query") != null) {
+                SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                oSTG.SetData("sqldatareader", sqlDataReader);
+            }
+            
             return oSTG;
+        }
+
+        public void closeConnection() {
+            this.sqlConn.Close();
         }
 
 

@@ -12,17 +12,30 @@ namespace Couche_middleware._06_Composant_acces_metier
 	{
 		public STG connection(STG oSTG)
 		{
-
+            ConnectionUser oConnectionUser = new ConnectionUser();
+            UpdateTokenUser oUpdateTokenUser = new UpdateTokenUser();
+            CheckTokenUser oCheckTokenUser = new CheckTokenUser();
 			if (!string.IsNullOrEmpty(oSTG.Operationname))
 			{
 				string operationName = (string)oSTG.Operationname;
 				if (operationName == "ConnectionUser") // Vérifie si le nom de la méthode à appeller est ConnectionUser
 				{
-					ConnectionUser oConnectionUser = new ConnectionUser();
+
 					oSTG = oConnectionUser.Execute(oSTG);
+
+                    if (true) //User est en base
+                    {
+                         
+                    }
 				}
 				else// if () // Vérifie le token en base de données
 				{
+                    oSTG = oCheckTokenUser.Execute(oSTG);
+                    if((bool)oSTG.GetData("statut_op"){
+                    
+                    
+                    }
+
 					if (operationName == "GpcsDecrypt")
 					{
 						//GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
