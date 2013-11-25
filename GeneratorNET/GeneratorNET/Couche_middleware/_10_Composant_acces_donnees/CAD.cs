@@ -1,4 +1,4 @@
-﻿using Couche_middleware._07_Couche_metier._08_Composant_metier;
+﻿using Common;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -35,7 +35,6 @@ namespace Couche_middleware._10_Composant_acces_donnees
             "Password=password;"+
             "Initial Catalog=wcf;"+
             "Server=172.16.255.194");
-            //Database=wcf;Server=172.16.255.194\\SQLEXPRESS;Integrated Security=True;connect timeout = 30");
             try
             {
                 this.sqlConn.Open();

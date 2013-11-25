@@ -17,5 +17,8 @@ namespace Couche_middleware._04_Composant_server
 			System.ServiceModel.OperationContract
 		]
 		STG connection(STG oSTG);
+
+        [System.ServiceModel.OperationContract]
+        void callback(string reponse);
 	}
 }
