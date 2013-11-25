@@ -38,10 +38,10 @@ namespace Couche_middleware._10_Composant_acces_donnees
             try
             {
                 this.sqlConn.Open();
-                Console.WriteLine("Connection Succeed");
+                //Console.WriteLine("Connection Succeed");
             }
-            catch (Exception ex) {
-                Console.WriteLine("Connection failed : " + ex.Message);
+            catch (Exception/* ex*/) {
+                //Console.WriteLine("Connection failed : " + ex.Message);
             }
         }
 
@@ -52,7 +52,7 @@ namespace Couche_middleware._10_Composant_acces_donnees
 
             while (sqlDataReader.Read())
             {
-                Console.WriteLine((string)sqlDataReader["use_login"]);
+                //Console.WriteLine((string)sqlDataReader["use_login"]);
 				oSTG.SetData("resultset", sqlDataReader);
             }
             
