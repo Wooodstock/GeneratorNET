@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://reception.stg.com/" targetNamespace="http://reception.stg.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="sendToQueue" type="tns:sendToQueue" />
+  <xs:element name="sendToQueueResponse" type="tns:sendToQueueResponse" />
+  <xs:complexType name="sendToQueue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="fileName" type="xs:string" />
+      <xs:element minOccurs="0" name="key" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="sendToQueueResponse">
+    <xs:sequence />
+  </xs:complexType>
+</xs:schema>

@@ -65,5 +65,9 @@ namespace Couche_middleware._04_Composant_server
 			}
 			return oSTG;
 		}
+
+        public void callback(string reponse) {
+            Console.WriteLine("J'ai trouvé une solution !");
+        }
 	}
 }
