@@ -10,12 +10,10 @@ using System.Net.Security;
 
 namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 {
-	[ServiceContract]
 	public class STG
 	{		
 		private bool status_op;
 
-		[DataMember]
 		public bool Status_op
 		{
 			get { return status_op; }
@@ -24,7 +22,6 @@ namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 
 		private string info;
 
-		[DataMember]
 		public string Info
 		{
 			get { return info; }
@@ -33,7 +30,6 @@ namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 
 		private string operationname;
 
-		[DataMember]
 		public string Operationname
 		{
 			get { return operationname; }
@@ -42,7 +38,6 @@ namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 
 		private string tokenApp;
 
-		[DataMember]
 		public string TokenApp
 		{
 			get { return tokenApp; }
@@ -51,23 +46,19 @@ namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 
 		private string tokenUser;
 
-		[DataMember]
 		public string TokenUser
 		{
 			get { return tokenUser; }
 			set { tokenUser = value; }
 		}
 
-		[DataMember]
 		public Hashtable data;
 
-		[OperationContract]
 		public object GetData(string key)
 		{
 			return this.data[key];
 		}
 
-		[OperationContract]
 		public void SetData(string key, object value)
 		{
 			if (this.data.ContainsKey(key))

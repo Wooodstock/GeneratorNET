@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Couche_middleware._07_Couche_metier._08_Composant_metier;
+using Common;
 using Couche_middleware._05_Groupe_processus;
 
 namespace Couche_middleware._04_Composant_server
@@ -17,6 +17,7 @@ namespace Couche_middleware._04_Composant_server
 
 		public STG connection(STG oSTG)
 		{
+			oSTG.Info = "arrivée sur le serveur";
 			oSTG.SetData("test", "this is a test");
 			if (oSTG.TokenApp == "Generator")
 			{
