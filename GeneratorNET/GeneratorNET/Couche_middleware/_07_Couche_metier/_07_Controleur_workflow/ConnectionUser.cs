@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Couche_middleware._07_Couche_metier._08_Composant_metier;
 using Couche_middleware._07_Couche_metier._09_Entite_mappage;
+using Couche_middleware._10_Composant_acces_donnees;
+using System.Data.SqlClient;
 
 namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
@@ -18,10 +20,24 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 				{
 					string login = (string)oSTG.GetData("login");
 					string password = (string)oSTG.GetData("password");
+					bool exist = false;
 					User oUser = new User(login, password);
 					oSTG = oUser.checkUser(oSTG);
+					CAD oCAD = new CAD();
+					oCAD.openConnection();
+					oSTG = oCAD.executeRQuery(oSTG);
+					SqlDataReader resultset = (SqlDataReader)oSTG.GetData("resultset");
+					try
+					{
+						resultset.Read();
+						exist = true;
+					}
+					catch (Exception)
+					{
 
-					if (true) // Vérification de l'utilisateur en base de données
+					}
+					oSTG.SetData("resultset", "");
+					if (exist) // Vérification de l'utilisateur en base de données
 					{
 						oSTG.Status_op = true;
 						oSTG.Info = "Connexion réussie";

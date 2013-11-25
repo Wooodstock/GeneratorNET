@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Couche_middleware._07_Couche_metier._08_Composant_metier;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -31,8 +31,8 @@ namespace Couche_middleware._10_Composant_acces_donnees
         public void openConnection() {
             this.sqlConn = new SqlConnection(
             "Persist Security Info=False;"+
-            "User ID=bertrand;"+
-            "Password=password;"+
+            "User ID=tony;"+
+            "Password=tony;"+
             "Initial Catalog=wcf;"+
             "Server=172.16.255.194");
             try
@@ -46,13 +46,14 @@ namespace Couche_middleware._10_Composant_acces_donnees
         }
 
         public STG executeRQuery(STG oSTG) {
-            string query = "SELECT * FROM t_user;";
-            SqlCommand sqlCommand = new SqlCommand(query, this.sqlConn);
+            //string query = "SELECT * FROM t_user;";
+            SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
             while (sqlDataReader.Read())
             {
                 Console.WriteLine((string)sqlDataReader["use_login"]);
+				oSTG.SetData("resultset", sqlDataReader);
             }
             
             return oSTG;
