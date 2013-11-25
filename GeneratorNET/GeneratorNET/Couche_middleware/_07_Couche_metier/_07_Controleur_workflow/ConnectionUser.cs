@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common;
+using Couche_middleware._07_Couche_metier._08_Composant_metier;
 
 namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
@@ -20,7 +20,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 					if (login == "toto" && password == "toto")
 					{
 						oSTG.Status_op = true;
-						oSTG.Info = "Connection réussie";
+						oSTG.Info = "Connexion réussie";
 						Console.WriteLine("Connexion réussie de l'utilisateur" + login);
 					}
 					else
