@@ -10,10 +10,11 @@ namespace Couche_middleware._04_Composant_server
 {
 	class Server : _04_Composant_server.IServer
 	{
-		/*
-		[System.Security.Permissions.PrincipalPermission
+		
+		[
+			System.Security.Permissions.PrincipalPermission
 			(System.Security.Permissions.SecurityAction.Assert, Unrestricted = true)
-		]*/
+		]
 
 		public STG connection(STG oSTG)
 		{

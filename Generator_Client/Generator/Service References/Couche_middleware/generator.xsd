@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="generator" elementFormDefault="qualified" targetNamespace="generator" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:element name="connection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="oSTG" nillable="true" type="q1:STG" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="connectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="connectionResult" nillable="true" type="q2:STG" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
