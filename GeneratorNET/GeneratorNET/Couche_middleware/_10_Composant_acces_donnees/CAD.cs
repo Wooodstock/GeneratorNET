@@ -31,17 +31,17 @@ namespace Couche_middleware._10_Composant_acces_donnees
         public void openConnection() {
             this.sqlConn = new SqlConnection(
             "Persist Security Info=False;"+
-            "User ID=bertrand;"+
-            "Password=password;"+
+            "User ID=tony;"+
+            "Password=tony;"+
             "Initial Catalog=wcf;"+
             "Server=172.16.255.194");
             try
             {
                 this.sqlConn.Open();
-                Console.WriteLine("Connection Succeed");
+                //Console.WriteLine("Connection Succeed");
             }
-            catch (Exception ex) {
-                Console.WriteLine("Connection failed : " + ex.Message);
+            catch (Exception/* ex*/) {
+                //Console.WriteLine("Connection failed : " + ex.Message);
             }
         }
 
@@ -53,7 +53,6 @@ namespace Couche_middleware._10_Composant_acces_donnees
 
                 oSTG.SetData("sqldatareader", sqlDataReader);
             }
-            
             return oSTG;
         }
 
