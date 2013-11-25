@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Couche_middleware._07_Couche_metier._08_Composant_metier;
+using Couche_middleware._07_Couche_metier._09_Entite_mappage;
 
 namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
@@ -17,11 +18,14 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 				{
 					string login = (string)oSTG.GetData("login");
 					string password = (string)oSTG.GetData("password");
-					if (login == "toto" && password == "toto")
+					User oUser = new User(login, password);
+					oSTG = oUser.checkUser(oSTG);
+
+					if (true) // Vérification de l'utilisateur en base de données
 					{
 						oSTG.Status_op = true;
 						oSTG.Info = "Connexion réussie";
-						Console.WriteLine("Connexion réussie de l'utilisateur" + login);
+						Console.WriteLine("Connexion réussie de l'utilisateur " + login);
 					}
 					else
 					{

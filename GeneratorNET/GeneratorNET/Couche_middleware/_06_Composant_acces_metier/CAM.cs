@@ -12,23 +12,29 @@ namespace Couche_middleware._06_Composant_acces_metier
 	{
 		public STG connection(STG oSTG)
 		{
+
 			if (!string.IsNullOrEmpty(oSTG.Operationname))
 			{
 				string operationName = (string)oSTG.Operationname;
-				if (operationName == "ConnectionUser")
+				if (operationName == "ConnectionUser") // Vérifie si le nom de la méthode à appeller est ConnectionUser
 				{
 					ConnectionUser oConnectionUser = new ConnectionUser();
 					oSTG = oConnectionUser.Execute(oSTG);
 				}
-				else if (operationName == "GpcsDecrypt")
+				else// if () // Vérifie le token en base de données
 				{
-					//GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
+					if (operationName == "GpcsDecrypt")
+					{
+						//GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
+					}
+					else
+					{
+						oSTG.Status_op = false;
+						oSTG.Info = "Le nom de l'opération n'est pas valide";
+					}	
+
 				}
-				else
-				{
-					oSTG.Status_op = false;
-					oSTG.Info = "Le nom de l'opération n'est pas valide";
-				}				
+							
 			}
 			else
 			{
