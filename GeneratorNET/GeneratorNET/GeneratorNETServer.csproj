@@ -35,10 +35,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>1AB724282D6F2B835B2A2E3B83009DE1D2A3AC52</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6A5A45113FFA497EED520BF51E4D2C2BA523BCB9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>key.pfx</ManifestKeyFile>
+    <ManifestKeyFile>test.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common">
@@ -71,8 +71,10 @@
     <None Include="App.config" />
     <None Include="GeneratorNETServer_1_TemporaryKey.pfx" />
     <None Include="GeneratorNETServer_2_TemporaryKey.pfx" />
+    <None Include="GeneratorNETServer_3_TemporaryKey.pfx" />
     <None Include="GeneratorNETServer_TemporaryKey.pfx" />
     <None Include="key.pfx" />
+    <None Include="test.pfx" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
