@@ -108,7 +108,12 @@ namespace Generator
         private void btn_Dechiffrer_Click(object sender, EventArgs e)
         {
             Dictionary<string, string[]> Files_Dictionnary = Prepare_Import();
-            
+
+            foreach(KeyValuePair<string, string[]> key in Files_Dictionnary)
+            {
+                Console.WriteLine(key.Value);
+            }
+
             /*CUT user_CUT = new CUT(user_CUC);
             user_CUT.dechiffrer();*/
         }

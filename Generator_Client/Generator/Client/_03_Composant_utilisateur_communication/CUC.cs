@@ -32,18 +32,14 @@ namespace Generator
             
             try
             {
-                pxy = new Couche_middleware.IcomposantServiceClient();
-                pxy.connection(oSTG);
-                /*myChannelFactory = new ChannelFactory<IcomposantService>("serviceWCF");
+                myChannelFactory = new ChannelFactory<IcomposantService>("NetTcpBinding_IcomposantService");
                 myService = myChannelFactory.CreateChannel();
-                oSTG = myService.connection(oSTG);*/
+                oSTG = myService.connection(oSTG);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Erreur(LOLOLOL) :" + ex.Message);
+                Console.WriteLine(ex.Message);
             }
-
-            Console.WriteLine("test" + (string)oSTG.Info);
 
             return oSTG;
         }

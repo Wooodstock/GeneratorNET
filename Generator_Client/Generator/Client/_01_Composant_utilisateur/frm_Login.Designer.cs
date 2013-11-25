@@ -75,7 +75,7 @@
             this.txt_PWD.Name = "txt_PWD";
             this.txt_PWD.PasswordChar = '*';
             this.txt_PWD.Size = new System.Drawing.Size(300, 20);
-            this.txt_PWD.TabIndex = 4;
+            this.txt_PWD.TabIndex = 2;
             // 
             // lbl_PWD
             // 
