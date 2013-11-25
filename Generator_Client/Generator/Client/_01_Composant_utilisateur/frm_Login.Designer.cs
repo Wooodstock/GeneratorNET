@@ -106,8 +106,7 @@
             // 
             // img_Logo
             // 
-            this.img_Logo.ImageLocation = "C:\\Users\\EMO_Kevin\\Documents\\Visual Studio 2012\\Projects\\Generator\\Generator_Logo" +
-    ".png";
+            this.img_Logo.ImageLocation = "C:\\Users\\EMO_Kevin\\Documents\\GeneratorNET\\Generator_Client\\Generator_Logo.png";
             this.img_Logo.Location = new System.Drawing.Point(172, 12);
             this.img_Logo.Name = "img_Logo";
             this.img_Logo.Size = new System.Drawing.Size(429, 429);
