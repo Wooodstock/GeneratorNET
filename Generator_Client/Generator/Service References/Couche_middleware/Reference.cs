@@ -9,17 +9,145 @@
 //------------------------------------------------------------------------------
 
 namespace Generator.Couche_middleware {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="STG", Namespace="http://schemas.datacontract.org/2004/07/Couche_middleware._07_Couche_metier._08_C" +
+        "omposant_metier")]
+    [System.SerializableAttribute()]
+    public partial class STG : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OperationnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool Status_opField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenAppField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TokenUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Hashtable dataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Info {
+            get {
+                return this.InfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InfoField, value) != true)) {
+                    this.InfoField = value;
+                    this.RaisePropertyChanged("Info");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Operationname {
+            get {
+                return this.OperationnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OperationnameField, value) != true)) {
+                    this.OperationnameField = value;
+                    this.RaisePropertyChanged("Operationname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Status_op {
+            get {
+                return this.Status_opField;
+            }
+            set {
+                if ((this.Status_opField.Equals(value) != true)) {
+                    this.Status_opField = value;
+                    this.RaisePropertyChanged("Status_op");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TokenApp {
+            get {
+                return this.TokenAppField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TokenAppField, value) != true)) {
+                    this.TokenAppField = value;
+                    this.RaisePropertyChanged("TokenApp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TokenUser {
+            get {
+                return this.TokenUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TokenUserField, value) != true)) {
+                    this.TokenUserField = value;
+                    this.RaisePropertyChanged("TokenUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Hashtable data {
+            get {
+                return this.dataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.dataField, value) != true)) {
+                    this.dataField = value;
+                    this.RaisePropertyChanged("data");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="generator", ConfigurationName="Couche_middleware.IcomposantService")]
     public interface IcomposantService {
         
         [System.ServiceModel.OperationContractAttribute(Action="generator/IcomposantService/connection", ReplyAction="generator/IcomposantService/connectionResponse")]
-        Common.STG connection(Common.STG oSTG);
+        Generator.Couche_middleware.STG connection(Generator.Couche_middleware.STG oSTG);
         
         [System.ServiceModel.OperationContractAttribute(Action="generator/IcomposantService/connection", ReplyAction="generator/IcomposantService/connectionResponse")]
-        System.Threading.Tasks.Task<Common.STG> connectionAsync(Common.STG oSTG);
+        System.Threading.Tasks.Task<Generator.Couche_middleware.STG> connectionAsync(Generator.Couche_middleware.STG oSTG);
         
         [System.ServiceModel.OperationContractAttribute(Action="generator/IcomposantService/callback", ReplyAction="generator/IcomposantService/callbackResponse")]
         void callback(string reponse);
@@ -55,11 +183,11 @@ namespace Generator.Couche_middleware {
                 base(binding, remoteAddress) {
         }
         
-        public Common.STG connection(Common.STG oSTG) {
+        public Generator.Couche_middleware.STG connection(Generator.Couche_middleware.STG oSTG) {
             return base.Channel.connection(oSTG);
         }
         
-        public System.Threading.Tasks.Task<Common.STG> connectionAsync(Common.STG oSTG) {
+        public System.Threading.Tasks.Task<Generator.Couche_middleware.STG> connectionAsync(Generator.Couche_middleware.STG oSTG) {
             return base.Channel.connectionAsync(oSTG);
         }
         

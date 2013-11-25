@@ -1,6 +1,7 @@
 ﻿using Generator;
 using Generator.Couche_middleware;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace Generator
 {
     public partial class frm_Login : Form
     {
-        static public Common.STG oSTG = new Common.STG();
+        public STG oSTG;
 
         public frm_Login()
         {
@@ -28,19 +29,31 @@ namespace Generator
 
         private void btn_Connection_Click(object sender, EventArgs e)
         {
-            /*CUC user_CUC = new CUC(Couche_middleware.IcomposantServiceClient, txt_Login.Text, txt_PWD.Text);
-
-            CUT user_CUT = new CUT(user_CUC);
-            user_CUT.login();
-
-            oSTG.data.Add(*/
-
+            oSTG = new STG();
+            oSTG.data = new Hashtable();
+            CUT user_CUT = new CUT();
             CUC user_CUC = new CUC();
-            user_CUC.sendMessage(oSTG);
-            //user_CUC.sendMessage(oSTG, txt_Login.Text, txt_PWD.Text);
 
-            /*Form form1 = new frm_Generator();
-            form1.Show();*/
+            if(string.IsNullOrEmpty(txt_Login.Text) || string.IsNullOrEmpty(txt_PWD.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs.", "Erreur", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (user_CUC.sendMessage(user_CUT.login(oSTG, txt_Login.Text, txt_PWD.Text)).Status_op == true)
+                {
+                    Form form1 = new frm_Generator();
+                    form1.Show();
+                }
+                else if (CUC.oSTG.Info == null)
+                {
+                    MessageBox.Show("Impossible de se connecter au serveur", "Erreur", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show(CUC.oSTG.Info, "Erreur", MessageBoxButtons.OK);
+                }
+            }
         }
 
         private void btn_Quitter_Click(object sender, EventArgs e)
