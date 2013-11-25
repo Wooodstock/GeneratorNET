@@ -99,18 +99,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\Couche_middleware\Arrays.xsd">
+    <None Include="Service References\Couche_middleware\Server.wsdl" />
+    <None Include="Service References\Couche_middleware\ServiceMetadata.wsdl" />
+    <None Include="Service References\Couche_middleware\ServiceMetadata.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Couche_middleware\Common.xsd">
+    <None Include="Service References\Couche_middleware\ServiceMetadata1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Couche_middleware\generator.wsdl" />
-    <None Include="Service References\Couche_middleware\generator.xsd">
+    <None Include="Service References\Couche_middleware\ServiceMetadata2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Couche_middleware\service.wsdl" />
-    <None Include="Service References\Couche_middleware\service.xsd">
+    <None Include="Service References\Couche_middleware\ServiceMetadata3.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -135,7 +135,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -20,6 +20,12 @@ namespace Generator.Couche_middleware {
         
         [System.ServiceModel.OperationContractAttribute(Action="generator/IcomposantService/connection", ReplyAction="generator/IcomposantService/connectionResponse")]
         System.Threading.Tasks.Task<Common.STG> connectionAsync(Common.STG oSTG);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="generator/IcomposantService/callback", ReplyAction="generator/IcomposantService/callbackResponse")]
+        void callback(string reponse);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="generator/IcomposantService/callback", ReplyAction="generator/IcomposantService/callbackResponse")]
+        System.Threading.Tasks.Task callbackAsync(string reponse);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +61,14 @@ namespace Generator.Couche_middleware {
         
         public System.Threading.Tasks.Task<Common.STG> connectionAsync(Common.STG oSTG) {
             return base.Channel.connectionAsync(oSTG);
+        }
+        
+        public void callback(string reponse) {
+            base.Channel.callback(reponse);
+        }
+        
+        public System.Threading.Tasks.Task callbackAsync(string reponse) {
+            return base.Channel.callbackAsync(reponse);
         }
     }
 }
