@@ -1,4 +1,4 @@
-﻿using Common;
+﻿using Couche_middleware._07_Couche_metier._08_Composant_metier;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -31,35 +31,44 @@ namespace Couche_middleware._10_Composant_acces_donnees
         public void openConnection() {
             this.sqlConn = new SqlConnection(
             "Persist Security Info=False;"+
-            "User ID=bertrand;"+
-            "Password=password;"+
+            "User ID=tony;"+
+            "Password=tony;"+
             "Initial Catalog=wcf;"+
             "Server=172.16.255.194");
             try
             {
                 this.sqlConn.Open();
-                Console.WriteLine("Connection Succeed");
+                //Console.WriteLine("Connection Succeed");
             }
-            catch (Exception ex) {
-                Console.WriteLine("Connection failed : " + ex.Message);
+            catch (Exception/* ex*/) {
+                //Console.WriteLine("Connection failed : " + ex.Message);
             }
         }
 
         public STG executeRQuery(STG oSTG) {
-            string query = "SELECT * FROM t_user;";
-            SqlCommand sqlCommand = new SqlCommand(query, this.sqlConn);
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
-            while (sqlDataReader.Read())
+            if (oSTG.GetData("query") != null)
             {
-                Console.WriteLine((string)sqlDataReader["use_login"]);
+                SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                oSTG.SetData("sqldatareader", sqlDataReader);
+            }
+            return oSTG;
+        }
+
+        public STG executeCUDQuery(STG oSTG) {
+            if (oSTG.GetData("query") != null) {
+                SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                oSTG.SetData("sqldatareader", sqlDataReader);
             }
             
             return oSTG;
         }
 
-        public STG executeCUDQuery(STG oSTG) {
-            return oSTG;
+        public void closeConnection() {
+            this.sqlConn.Close();
         }
 
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common;
+using Couche_middleware._07_Couche_metier._08_Composant_metier;
 using Couche_middleware._05_Groupe_processus;
 
 namespace Couche_middleware._04_Composant_server

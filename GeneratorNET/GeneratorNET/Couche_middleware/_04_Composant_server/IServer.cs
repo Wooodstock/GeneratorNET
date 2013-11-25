@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
-using Common;
+using Couche_middleware._07_Couche_metier._08_Composant_metier;
 
 namespace Couche_middleware._04_Composant_server
 {
