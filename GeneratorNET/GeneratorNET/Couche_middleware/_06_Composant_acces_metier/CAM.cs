@@ -15,6 +15,8 @@ namespace Couche_middleware._06_Composant_acces_metier
             ConnectionUser oConnectionUser = new ConnectionUser();
             UpdateTokenUser oUpdateTokenUser = new UpdateTokenUser();
             CheckTokenUser oCheckTokenUser = new CheckTokenUser();
+            Dechiffrer oDechiffrer = new Dechiffrer();
+
 			if (!string.IsNullOrEmpty(oSTG.Operationname))
 			{
 				string operationName = (string)oSTG.Operationname;
@@ -42,9 +44,9 @@ namespace Couche_middleware._06_Composant_acces_metier
                     oSTG = oCheckTokenUser.Execute(oSTG);
                     if (oSTG.Status_op)
                     {
-                        if (operationName == "dechiffrer")
+                        if (operationName == "Dechiffrer")
                         {
-                            //GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
+                            oDechiffrer.Execute(oSTG);
                         }
                         else
                         {
