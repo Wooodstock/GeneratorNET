@@ -62,6 +62,7 @@
     <Compile Include="Couche_middleware\_06_Composant_acces_metier\CAM.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\CheckTokenUser.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\ConnectionUser.cs" />
+    <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\UpdateTokenUser.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_08_Composant_metier\STG.cs" />
     <Compile Include="Couche_middleware\Host.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_09_Entite_mappage\User.cs" />

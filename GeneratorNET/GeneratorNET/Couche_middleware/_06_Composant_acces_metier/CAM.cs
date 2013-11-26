@@ -23,29 +23,39 @@ namespace Couche_middleware._06_Composant_acces_metier
 
 					oSTG = oConnectionUser.Execute(oSTG);
 
-                    if (true) //User est en base
+                    if ((bool)oSTG.GetData("statut_op")) //User est en base
                     {
-                         
+                        oSTG = oUpdateTokenUser.Execute(oSTG);
+                        if ((bool)oSTG.GetData("statut_op"))
+                        {
+                            oSTG.Status_op = true;
+                            oSTG.Info = "Connection Succeed";
+                        }// Token updaté
+                    }
+                    else {
+                        oSTG.Status_op = false;
+                        oSTG.Info = "Echec connection User";
                     }
 				}
 				else// if () // Vérifie le token en base de données
 				{
                     oSTG = oCheckTokenUser.Execute(oSTG);
-                    if((bool)oSTG.GetData("statut_op"){
-                    
-                    
+                    if ((bool)oSTG.GetData("statut_op"))
+                    {
+                        if (operationName == "GpcsDecrypt")
+                        {
+                            //GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
+                        }
+                        else
+                        {
+                            oSTG.Status_op = false;
+                            oSTG.Info = "Le nom de l'opération n'est pas valide";
+                        }	
                     }
-
-					if (operationName == "GpcsDecrypt")
-					{
-						//GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
-					}
-					else
-					{
-						oSTG.Status_op = false;
-						oSTG.Info = "Le nom de l'opération n'est pas valide";
-					}	
-
+                    else {
+                        oSTG.Status_op = false;
+                        oSTG.Info = "Le token n'est pas trouvé";
+                    }
 				}
 							
 			}
