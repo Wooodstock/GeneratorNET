@@ -26,7 +26,7 @@ namespace Generator
 
         public STG dechiffrer(STG oSTG, Hashtable oFiles_Hashtable)
         {
-            oSTG.Operationname = "dechiffrer";
+            oSTG.Operationname = "GpcsDecrypt_Dechiffrer";
             oSTG.data.Remove("Files_Hashtable");
             oSTG.data.Add("Files_Hashtable", oFiles_Hashtable);
 

@@ -31,6 +31,7 @@ namespace Generator
         {
             oSTG = new STG();
             oSTG.data = new Hashtable();
+
             CUT user_CUT = new CUT();
             CUC user_CUC = new CUC();
 

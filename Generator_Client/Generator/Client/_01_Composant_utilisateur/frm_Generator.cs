@@ -109,7 +109,9 @@ namespace Generator
         private void btn_Dechiffrer_Click(object sender, EventArgs e)
         {
             CUT user_CUT = new CUT();
-            user_CUT.dechiffrer(CUC.oSTG, Prepare_Import());
+            CUC user_CUC = new CUC();
+
+            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Prepare_Import()));
         }
 
     }
