@@ -37,7 +37,7 @@ namespace Couche_middleware._06_Composant_acces_metier
                         oSTG.Info = "Echec connection User";
                     }
 				}
-				else// if () // Vérifie le token en base de données
+				else// Vérifie le token en base de données
 				{
                     oSTG = oCheckTokenUser.Execute(oSTG);
                     if (oSTG.Status_op)
