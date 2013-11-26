@@ -20,23 +20,13 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 				{
 					string login = (string)oSTG.GetData("login");
 					string password = (string)oSTG.GetData("password");
-					bool exist = false;
 					User oUser = new User(login, password);
 					oSTG = oUser.checkUser(oSTG);
 					CAD oCAD = new CAD();
 					oCAD.openConnection();
 					oSTG = oCAD.executeRQuery(oSTG);
-					SqlDataReader resultset = (SqlDataReader)oSTG.GetData("sqldatareader");
-					try
-					{
-						resultset.Read();
-						exist = true;
-					}
-					catch (Exception)
-					{
-
-					}					
-					if (exist) // Vérification de l'utilisateur en base de données
+					SqlDataReader resultset = (SqlDataReader)oSTG.GetData("sqldatareader");			
+					if (resultset.HasRows) // Vérification de l'utilisateur en base de données
 					{
 						oSTG.Status_op = true;
 						oSTG.Info = "Connexion réussie";

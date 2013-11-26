@@ -40,7 +40,7 @@ namespace Couche_middleware._06_Composant_acces_metier
 				else// if () // Vérifie le token en base de données
 				{
                     oSTG = oCheckTokenUser.Execute(oSTG);
-                    if ((bool)oSTG.GetData("statut_op"))
+                    if (oSTG.Status_op)
                     {
                         if (operationName == "GpcsDecrypt")
                         {
