@@ -1,5 +1,6 @@
 ﻿using Generator.Couche_middleware;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,6 @@ namespace Generator
 {
     public class CUT
     {
-        /*private CUC oCUC;
-
-        public CUT(CUC oCUC)
-        {
-            this.oCUC = oCUC;
-        }*/
-
         public CUT()
         {
 
@@ -23,22 +17,18 @@ namespace Generator
 
         public STG login(STG oSTG, string oLogin, string oPWD)
         {
-            oSTG.Operationname = "login";
+            oSTG.Operationname = "GpcsUser_ConnectionUser";
             oSTG.data.Add("login", oLogin);
             oSTG.data.Add("password", oPWD);
 
             return oSTG;
         }
 
-        public STG dechiffrer(STG oSTG, Dictionary<string, string> oFiles_Dictionnary)
+        public STG dechiffrer(STG oSTG, Hashtable oFiles_Hashtable)
         {
             oSTG.Operationname = "dechiffrer";
-
-            foreach (KeyValuePair<string, string> key in oFiles_Dictionnary)
-            {
-                oSTG.data.Add("file_name", key.Key);
-                oSTG.data.Add("file_content", key.Value);
-            }
+            oSTG.data.Remove("Files_Hashtable");
+            oSTG.data.Add("Files_Hashtable", oFiles_Hashtable);
 
             return oSTG;
         }

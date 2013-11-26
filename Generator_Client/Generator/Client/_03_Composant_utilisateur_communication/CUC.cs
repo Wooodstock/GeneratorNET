@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace Generator
 {
@@ -21,7 +22,6 @@ namespace Generator
         public STG sendMessage(STG oSTG)
         {
             oSTG.TokenApp = "Generator";
-            oSTG.Operationname = "GpcsUser_ConnectionUser";
 
             ChannelFactory<Couche_middleware.IcomposantService> myChannelFactory = null;
             Couche_middleware.IcomposantService myService;
@@ -34,10 +34,8 @@ namespace Generator
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK);
             }
-
-            Console.WriteLine(oSTG.Info);
 
             CUC.oSTG = oSTG;
 
