@@ -35,8 +35,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 					catch (Exception)
 					{
 
-					}
-					oSTG.SetData("sqldatareader", "");
+					}					
 					if (exist) // Vérification de l'utilisateur en base de données
 					{
 						oSTG.Status_op = true;

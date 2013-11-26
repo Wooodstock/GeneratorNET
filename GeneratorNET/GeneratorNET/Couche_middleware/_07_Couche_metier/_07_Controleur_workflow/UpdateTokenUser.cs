@@ -30,7 +30,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
                     oSTG = cad.executeCUDQuery(oSTG);
 
                     SqlDataReader sqlDataReader = (SqlDataReader)oSTG.GetData("sqldatareader");
-                    if (sqlDataReader.HasRows) //verification du token en base
+                    if (sqlDataReader.RecordsAffected != 0) //verification du token en base
                     {
                         oSTG.Status_op = true;
                         oSTG.Info = "Token Updaté";
@@ -39,7 +39,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
                     else
                     {
                         oSTG.Status_op = false;
-                        oSTG.Info = "Le token utilisateur n'existe pas en base";
+                        oSTG.Info = "L'utilisation du token utilisateur n'a pas réussi";
                     }
                     cad.closeConnection();
                 }

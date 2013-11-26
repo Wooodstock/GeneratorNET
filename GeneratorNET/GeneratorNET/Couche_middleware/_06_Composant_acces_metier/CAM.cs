@@ -52,7 +52,8 @@ namespace Couche_middleware._06_Composant_acces_metier
                             oSTG.Info = "Le nom de l'opération n'est pas valide";
                         }	
                     }
-                    else {
+                    else 
+					{
                         oSTG.Status_op = false;
                         oSTG.Info = "Le token n'est pas trouvé";
                     }

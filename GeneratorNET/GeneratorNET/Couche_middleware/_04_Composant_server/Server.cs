@@ -64,6 +64,7 @@ namespace Couche_middleware._04_Composant_server
 				oSTG.Status_op = false;
 				oSTG.Info = "Le token de l'application n'est pas valide";
 			}
+			oSTG.SetData("sqldatareader", "");
 			return oSTG;
 		}
 
