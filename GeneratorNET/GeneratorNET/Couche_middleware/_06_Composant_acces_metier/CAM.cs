@@ -23,10 +23,10 @@ namespace Couche_middleware._06_Composant_acces_metier
 
 					oSTG = oConnectionUser.Execute(oSTG);
 
-                    if ((bool)oSTG.GetData("statut_op")) //User est en base
+                    if (oSTG.Status_op) //User est en base
                     {
                         oSTG = oUpdateTokenUser.Execute(oSTG);
-                        if ((bool)oSTG.GetData("statut_op"))
+                        if (oSTG.Status_op)
                         {
                             oSTG.Status_op = true;
                             oSTG.Info = "Connection Succeed";

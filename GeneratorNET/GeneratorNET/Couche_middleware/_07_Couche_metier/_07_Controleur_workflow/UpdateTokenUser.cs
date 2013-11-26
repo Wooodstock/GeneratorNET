@@ -19,10 +19,10 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 
             if (!string.IsNullOrEmpty((string)oSTG.GetData("login")))
             {
-                if (!string.IsNullOrEmpty((string)oSTG.GetData("tokenUser")))
+                if (!string.IsNullOrEmpty(oSTG.TokenUser))
                 {
                     string login = (string)oSTG.GetData("login");
-                    string token = (string)oSTG.GetData("token");
+                    string token = oSTG.TokenUser;
                     User oUser = new User(login, token);
                     oSTG = oUser.insertToken(oSTG);
 

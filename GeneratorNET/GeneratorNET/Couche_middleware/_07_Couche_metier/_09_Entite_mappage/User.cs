@@ -32,15 +32,14 @@ namespace Couche_middleware._07_Couche_metier._09_Entite_mappage
         public STG checkToken(STG oSTG) {
             oSTG.SetData("query", "SELECT *"+
                                   "FROM t_user "+
-                                  "WHERE use_token = "+ oSTG.GetData("tokenUser") + ";");
+                                  "WHERE use_token = "+ oSTG.TokenUser + ";");
             return oSTG;
         }
 
         public STG insertToken(STG oSTG) {
-            oSTG.SetData("query", "UPDATE t_user"+
-                        "SET [use_token] = 'token'"+
-                        "WHERE use_login = " + oSTG.GetData("login") + " " +
-                         oSTG.GetData("tokenUser") + ";");
+            oSTG.SetData("query", "UPDATE t_user "+
+                        "SET [use_token] = '" + oSTG.TokenUser + "' "+
+                        "WHERE use_login = '" + oSTG.GetData("login") + "' ;");
             return oSTG;
         }
     }

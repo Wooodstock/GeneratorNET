@@ -26,7 +26,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 					CAD oCAD = new CAD();
 					oCAD.openConnection();
 					oSTG = oCAD.executeRQuery(oSTG);
-					SqlDataReader resultset = (SqlDataReader)oSTG.GetData("resultset");
+					SqlDataReader resultset = (SqlDataReader)oSTG.GetData("sqldatareader");
 					try
 					{
 						resultset.Read();
@@ -36,7 +36,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 					{
 
 					}
-					oSTG.SetData("resultset", "");
+					oSTG.SetData("sqldatareader", "");
 					if (exist) // Vérification de l'utilisateur en base de données
 					{
 						oSTG.Status_op = true;
@@ -44,7 +44,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 						Console.WriteLine("Connexion réussie de l'utilisateur " + login);
 						int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 						string log = login;
-						if (login.Length < 10)
+						if (login.Length > 10)
 						{
 							log = login.Substring(0, 10);
 							log += unixTimestamp;
