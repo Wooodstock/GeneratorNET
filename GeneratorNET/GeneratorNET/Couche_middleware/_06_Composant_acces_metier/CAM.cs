@@ -42,7 +42,7 @@ namespace Couche_middleware._06_Composant_acces_metier
                     oSTG = oCheckTokenUser.Execute(oSTG);
                     if (oSTG.Status_op)
                     {
-                        if (operationName == "GpcsDecrypt")
+                        if (operationName == "dechiffrer")
                         {
                             //GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
                         }
