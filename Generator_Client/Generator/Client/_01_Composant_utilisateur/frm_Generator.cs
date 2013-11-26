@@ -1,4 +1,5 @@
 ﻿using Generator;
+using Generator.Couche_middleware;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,9 +40,8 @@ namespace Generator
                         lst_Files.Items.Add(filename);
                     }
 				}
-                
-                Refresh_NB_Files();
 			}
+            Refresh_NB_Files();
         }
 
         private void Refresh_NB_Files()
@@ -93,13 +93,13 @@ namespace Generator
             }
         }
 
-        private Dictionary<string, string[]> Prepare_Import()
+        private Dictionary<string, string> Prepare_Import()
         {
-            Dictionary<string, string[]> Files_Dictionnary = new Dictionary<string, string[]>();
+            Dictionary<string, string> Files_Dictionnary = new Dictionary<string, string>();
 
             foreach(string filename in openFileDialog1.FileNames)
 			{
-                Files_Dictionnary.Add(filename, System.IO.File.ReadAllLines(filename));
+                Files_Dictionnary.Add(filename, System.IO.File.ReadAllText(filename));
 			}
 
             return Files_Dictionnary;
@@ -107,15 +107,15 @@ namespace Generator
 
         private void btn_Dechiffrer_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string[]> Files_Dictionnary = Prepare_Import();
+            Dictionary<string, string> Files_Dictionnary = Prepare_Import();
+            
+            CUT user_CUT = new CUT();
+            user_CUT.dechiffrer(CUC.oSTG, Files_Dictionnary);
 
-            foreach(KeyValuePair<string, string[]> key in Files_Dictionnary)
+            foreach(string key in CUC.oSTG.data)
             {
-                Console.WriteLine(key.Value);
+                listBox1.Items.Add(key + CUC.oSTG.data[key]);
             }
-
-            /*CUT user_CUT = new CUT(user_CUC);
-            user_CUT.dechiffrer();*/
         }
 
     }
