@@ -46,21 +46,29 @@ namespace Couche_middleware._10_Composant_acces_donnees
         }
 
         public STG executeRQuery(STG oSTG) {
-            //string query = "SELECT * FROM t_user;";
-            SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
-            while (sqlDataReader.Read())
+            if (oSTG.GetData("query") != null)
             {
-                //Console.WriteLine((string)sqlDataReader["use_login"]);
-				oSTG.SetData("resultset", sqlDataReader);
+                SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                oSTG.SetData("sqldatareader", sqlDataReader);
+            }
+            return oSTG;
+        }
+
+        public STG executeCUDQuery(STG oSTG) {
+            if (oSTG.GetData("query") != null) {
+                SqlCommand sqlCommand = new SqlCommand((string)oSTG.GetData("query"), this.sqlConn);
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                oSTG.SetData("sqldatareader", sqlDataReader);
             }
             
             return oSTG;
         }
 
-        public STG executeCUDQuery(STG oSTG) {
-            return oSTG;
+        public void closeConnection() {
+            this.sqlConn.Close();
         }
 
 

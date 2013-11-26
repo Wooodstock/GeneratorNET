@@ -99,6 +99,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\Couche_middleware\Generator.Couche_middleware.STG.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Couche_middleware\Server.wsdl" />
     <None Include="Service References\Couche_middleware\ServiceMetadata.wsdl" />
     <None Include="Service References\Couche_middleware\ServiceMetadata.xsd">
@@ -115,13 +118,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Couche_middleware\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Couche_middleware\ServiceMetadata.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Couche_middleware\configuration91.svcinfo" />
