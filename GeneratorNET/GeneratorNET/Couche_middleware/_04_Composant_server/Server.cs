@@ -38,7 +38,8 @@ namespace Couche_middleware._04_Composant_server
 						else if (nomClasse == "GpcsDecrypt")
 						{
 							GpcsDecrypt oGpcsDecrypt = new GpcsDecrypt();
-							
+                            oSTG.Operationname = nomMethode;
+                            oSTG = oGpcsDecrypt.Decrypter(oSTG);
 						}
 						else
 						{
