@@ -14,7 +14,8 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
     {
         private CAD cad = new CAD();
 
-        public STG Execute(STG oSTG){
+        public STG Execute(STG oSTG)
+		{
 
         if (!string.IsNullOrEmpty((string)oSTG.GetData("login")))
 			{
