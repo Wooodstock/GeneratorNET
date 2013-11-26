@@ -20,28 +20,30 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 				{
 					string login = (string)oSTG.GetData("login");
 					string password = (string)oSTG.GetData("password");
-					bool exist = false;
 					User oUser = new User(login, password);
 					oSTG = oUser.checkUser(oSTG);
 					CAD oCAD = new CAD();
 					oCAD.openConnection();
 					oSTG = oCAD.executeRQuery(oSTG);
-					SqlDataReader resultset = (SqlDataReader)oSTG.GetData("resultset");
-					try
-					{
-						resultset.Read();
-						exist = true;
-					}
-					catch (Exception)
-					{
-
-					}
-					oSTG.SetData("resultset", "");
-					if (exist) // Vérification de l'utilisateur en base de données
+					SqlDataReader resultset = (SqlDataReader)oSTG.GetData("sqldatareader");			
+					if (resultset.HasRows) // Vérification de l'utilisateur en base de données
 					{
 						oSTG.Status_op = true;
 						oSTG.Info = "Connexion réussie";
 						Console.WriteLine("Connexion réussie de l'utilisateur " + login);
+						int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+						string log = login;
+						if (login.Length > 10)
+						{
+							log = login.Substring(0, 10);
+							log += unixTimestamp;
+						}
+						else
+						{
+							log += unixTimestamp;
+							log += unixTimestamp.ToString().Substring(0, (10-login.Length));
+						}
+						oSTG.TokenUser = log;
 					}
 					else
 					{
