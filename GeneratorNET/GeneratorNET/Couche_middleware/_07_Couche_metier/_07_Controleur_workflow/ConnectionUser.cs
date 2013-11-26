@@ -42,6 +42,19 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 						oSTG.Status_op = true;
 						oSTG.Info = "Connexion réussie";
 						Console.WriteLine("Connexion réussie de l'utilisateur " + login);
+						int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+						string log = login;
+						if (login.Length < 10)
+						{
+							log = login.Substring(0, 10);
+							log += unixTimestamp;
+						}
+						else
+						{
+							log += unixTimestamp;
+							log += unixTimestamp.ToString().Substring(0, (10-login.Length));
+						}
+						oSTG.TokenUser = log;
 					}
 					else
 					{
