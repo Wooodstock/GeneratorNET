@@ -1,6 +1,7 @@
 ﻿using Generator;
 using Generator.Couche_middleware;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -93,29 +94,24 @@ namespace Generator
             }
         }
 
-        private Dictionary<string, string> Prepare_Import()
+        private Hashtable Prepare_Import()
         {
-            Dictionary<string, string> Files_Dictionnary = new Dictionary<string, string>();
+            Hashtable Files_Hashtable = new Hashtable();
 
             foreach(string filename in openFileDialog1.FileNames)
 			{
-                Files_Dictionnary.Add(filename, System.IO.File.ReadAllText(filename));
+                Files_Hashtable.Add(filename, System.IO.File.ReadAllText(filename));
 			}
 
-            return Files_Dictionnary;
+            return Files_Hashtable;
         }
 
         private void btn_Dechiffrer_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> Files_Dictionnary = Prepare_Import();
-            
             CUT user_CUT = new CUT();
-            user_CUT.dechiffrer(CUC.oSTG, Files_Dictionnary);
+            CUC user_CUC = new CUC();
 
-            foreach(string key in CUC.oSTG.data)
-            {
-                listBox1.Items.Add(key + CUC.oSTG.data[key]);
-            }
+            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Prepare_Import()));
         }
 
     }

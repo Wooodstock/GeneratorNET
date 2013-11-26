@@ -39,7 +39,6 @@
             this.btn_Delete_File = new System.Windows.Forms.Button();
             this.lbl_NB_Files = new System.Windows.Forms.Label();
             this.btn_Ouvrir = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,21 +140,12 @@
             this.btn_Ouvrir.UseVisualStyleBackColor = true;
             this.btn_Ouvrir.Click += new System.EventHandler(this.btn_Ouvrir_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(29, 24);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(739, 212);
-            this.listBox1.TabIndex = 11;
-            // 
             // frm_Generator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(780, 557);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btn_Ouvrir);
             this.Controls.Add(this.lbl_NB_Files);
             this.Controls.Add(this.btn_Delete_File);
@@ -189,7 +179,6 @@
         private System.Windows.Forms.Button btn_Delete_File;
         private System.Windows.Forms.Label lbl_NB_Files;
         private System.Windows.Forms.Button btn_Ouvrir;
-        private System.Windows.Forms.ListBox listBox1;
 
 
 
