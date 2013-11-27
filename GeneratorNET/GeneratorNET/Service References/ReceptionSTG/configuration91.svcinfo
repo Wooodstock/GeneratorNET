@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="oHKTY2RyS2GSdE7tOxXClN5M54U=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="A23TghUVnjDtiBG0eG6RwmPtHAk=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ReceptionSTGPortBinding">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ReceptionSTGPort" contract="ReceptionSTG.ReceptionSTG" bindingType="basicHttpBinding" address="http://localhost:18765/ReceptionSTG/ReceptionSTG" bindingConfiguration="ReceptionSTGPortBinding">
+    <endpoint name="ReceptionSTGPort" contract="ReceptionSTG.ReceptionSTG" bindingType="basicHttpBinding" address="http://172.16.254.126:18765/ReceptionSTG/ReceptionSTG" bindingConfiguration="ReceptionSTGPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:18765/ReceptionSTG/ReceptionSTG</serializedValue>
+          <serializedValue>http://172.16.254.126:18765/ReceptionSTG/ReceptionSTG</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

@@ -34,7 +34,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
                     {
                         oSTG.Status_op = true;
                         oSTG.Info = "Token Updaté";
-                        Console.WriteLine("Le token de l'utilisateur est bon " + login);
+                        //Console.WriteLine("Le token de l'utilisateur est bon " + login);
                     }
                     else
                     {

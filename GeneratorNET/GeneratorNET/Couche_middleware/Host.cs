@@ -7,7 +7,6 @@ using System.ServiceModel;
 using Couche_middleware._10_Composant_acces_donnees;
 using GeneratorNET.ReceptionSTG;
 using System.Collections;
-using Common;
 
 
 namespace Couche_middleware

@@ -41,9 +41,6 @@
     <ManifestKeyFile>test.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common">
-      <HintPath>..\Common\bin\Debug\Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -82,8 +79,6 @@
     <None Include="Service References\ReceptionSTG\GeneratorNET.ReceptionSTG.sendToQueueResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ReceptionSTG\ReceptionSTG.wsdl" />
-    <None Include="Service References\ReceptionSTG\ReceptionSTG.xsd" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -98,6 +93,10 @@
     <None Include="Service References\ReceptionSTG\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ReceptionSTG\ReceptionSTG1.wsdl" />
+    <None Include="Service References\ReceptionSTG\ReceptionSTG1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ReceptionSTG\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
