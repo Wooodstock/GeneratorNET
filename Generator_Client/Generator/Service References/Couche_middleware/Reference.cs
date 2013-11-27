@@ -41,6 +41,9 @@ namespace Generator.Couche_middleware {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Hashtable dataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Hashtable filesField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -125,6 +128,19 @@ namespace Generator.Couche_middleware {
                 if ((object.ReferenceEquals(this.dataField, value) != true)) {
                     this.dataField = value;
                     this.RaisePropertyChanged("data");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Hashtable files {
+            get {
+                return this.filesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.filesField, value) != true)) {
+                    this.filesField = value;
+                    this.RaisePropertyChanged("files");
                 }
             }
         }

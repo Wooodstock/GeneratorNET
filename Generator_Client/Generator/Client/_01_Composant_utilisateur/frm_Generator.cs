@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,8 @@ namespace Generator
 {
     public partial class frm_Generator : Form
     {
+        public int Bar_Percent;
+
         public frm_Generator()
         {
             InitializeComponent();
@@ -24,6 +27,8 @@ namespace Generator
         private void frm_Generator_Load(object sender, EventArgs e)
         {
             frm_Login.ActiveForm.Hide();
+
+            btn_Annuler.Visible = false;
 
             Refresh_NB_Files();
         }
@@ -101,13 +106,33 @@ namespace Generator
 
             CUC.oSTG.files = new Hashtable();
 
+            if (lst_Files.Items.Count > 0)
+            {
+                btn_Dechiffrer.Enabled = false;
+                btn_Delete_File.Enabled = false;
+                btn_Parcourir.Enabled = false;
+            }
+
             foreach (string filename in openFileDialog1.FileNames)
             {
                 CUC.oSTG.files.Add(filename, System.IO.File.ReadAllText(filename));
             }
-            
-            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG));
+
+            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Convert.ToInt16(txt_SampleSize.Text)));
+
+            btn_Annuler.Visible = true;
+
+            double Bar_Percent_double = Math.Round(100 / (double)lst_Files.Items.Count, 0);
+
+            bar_FilesDone.Value += Bar_Percent;
         }
 
+        private void btn_Annuler_Click(object sender, EventArgs e)
+        {
+            btn_Annuler.Visible = false;
+            btn_Dechiffrer.Enabled = true;
+            btn_Delete_File.Enabled = true;
+            btn_Parcourir.Enabled = true;
+        }
     }
 }
