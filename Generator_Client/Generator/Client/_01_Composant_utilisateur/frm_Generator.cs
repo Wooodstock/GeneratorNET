@@ -94,24 +94,19 @@ namespace Generator
             }
         }
 
-        private Hashtable Prepare_Import()
-        {
-            Hashtable Files_Hashtable = new Hashtable();
-
-            foreach(string filename in openFileDialog1.FileNames)
-			{
-                Files_Hashtable.Add(filename, System.IO.File.ReadAllText(filename));
-			}
-
-            return Files_Hashtable;
-        }
-
         private void btn_Dechiffrer_Click(object sender, EventArgs e)
         {
             CUT user_CUT = new CUT();
             CUC user_CUC = new CUC();
 
-            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Prepare_Import()));
+            CUC.oSTG.files = new Hashtable();
+
+            foreach (string filename in openFileDialog1.FileNames)
+            {
+                CUC.oSTG.files.Add(filename, System.IO.File.ReadAllText(filename));
+            }
+            
+            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG));
         }
 
     }
