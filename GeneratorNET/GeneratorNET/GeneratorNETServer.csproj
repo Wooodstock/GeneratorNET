@@ -60,7 +60,9 @@
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\CheckTokenUser.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\ConnectionUser.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\Dechiffrer.cs" />
+    <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\Stop.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\UpdateTokenUser.cs" />
+    <Compile Include="Couche_middleware\_07_Couche_metier\_08_Composant_metier\GlobalVariables.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_08_Composant_metier\STG.cs" />
     <Compile Include="Couche_middleware\Host.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_09_Entite_mappage\User.cs" />

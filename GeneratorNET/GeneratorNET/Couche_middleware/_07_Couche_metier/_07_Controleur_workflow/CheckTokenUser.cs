@@ -8,7 +8,7 @@ using Couche_middleware._07_Couche_metier._09_Entite_mappage;
 using Couche_middleware._10_Composant_acces_donnees;
 using System.Data.SqlClient;
 
-namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
+namespace Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
     class CheckTokenUser
     {

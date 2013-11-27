@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Couche_middleware._07_Couche_metier._08_Composant_metier;
-using GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow;
+using Couche_middleware._07_Couche_metier._07_Controleur_workflow;
 
 namespace Couche_middleware._06_Composant_acces_metier
 {
@@ -16,6 +16,7 @@ namespace Couche_middleware._06_Composant_acces_metier
             UpdateTokenUser oUpdateTokenUser = new UpdateTokenUser();
             CheckTokenUser oCheckTokenUser = new CheckTokenUser();
             Dechiffrer oDechiffrer = new Dechiffrer();
+			Stop oStop = new Stop();
 
 			if (!string.IsNullOrEmpty(oSTG.Operationname))
 			{
@@ -48,6 +49,10 @@ namespace Couche_middleware._06_Composant_acces_metier
                         {
                             oDechiffrer.Execute(oSTG);
                         }
+						else if (operationName == "Stop")
+						{
+							oStop.Execute();
+						}
                         else
                         {
                             oSTG.Status_op = false;

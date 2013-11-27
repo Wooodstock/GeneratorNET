@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
+namespace Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
     class UpdateTokenUser
     {
