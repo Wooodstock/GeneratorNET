@@ -8,7 +8,7 @@ using Couche_middleware._07_Couche_metier._09_Entite_mappage;
 using Couche_middleware._10_Composant_acces_donnees;
 using System.Data.SqlClient;
 
-namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
+namespace Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
 	class ConnectionUser
 	{
@@ -30,7 +30,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 					{
 						oSTG.Status_op = true;
 						oSTG.Info = "Connexion réussie";
-						Console.WriteLine("Connexion réussie de l'utilisateur " + login);
+						//Console.WriteLine("Connexion réussie de l'utilisateur " + login);
 						int unixTimestamp = (int)(DateTime.Now.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
 						string log = login;
 						if (login.Length > 10)

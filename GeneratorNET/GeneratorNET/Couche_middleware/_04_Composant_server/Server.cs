@@ -69,8 +69,10 @@ namespace Couche_middleware._04_Composant_server
 			return oSTG;
 		}
 
-        public void callback(string reponse) {
-            Console.WriteLine("J'ai trouvé une solution !");
+        public void callback(string reponse) 
+		{
+            Console.WriteLine("J'ai trouvé une solution !" + reponse);
+			Couche_middleware._07_Couche_metier._08_Composant_metier.GlobalVariables.finTraitement = true;
         }
 	}
 }

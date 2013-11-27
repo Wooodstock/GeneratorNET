@@ -8,7 +8,7 @@ using Couche_middleware._07_Couche_metier._09_Entite_mappage;
 using Couche_middleware._10_Composant_acces_donnees;
 using System.Data.SqlClient;
 
-namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow
+namespace Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
     class CheckTokenUser
     {
@@ -19,7 +19,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 
         if (!string.IsNullOrEmpty((string)oSTG.GetData("login")))
 			{
-                if (!string.IsNullOrEmpty((string)oSTG.GetData("tokenUser")))
+                if (!string.IsNullOrEmpty((string)oSTG.TokenUser))
                 {
                     string login = (string)oSTG.GetData("login");
                     string token = (string)oSTG.GetData("token");
@@ -34,7 +34,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
                     {
                         oSTG.Status_op = true;
                         oSTG.Info = "Token Trouvé";
-                        Console.WriteLine("Le token de l'utilisateur est bon " + login);
+                        //Console.WriteLine("Le CheckTokenUser de l'utilisateur est bon " + login);
                     }
                     else
                     {
@@ -54,8 +54,7 @@ namespace GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workfl
 				oSTG.Status_op = false;
 				oSTG.Info = "Le login n'est pas fourni";
 			}
-			return oSTG;
-		
+			return oSTG;		
         }
     }
 }

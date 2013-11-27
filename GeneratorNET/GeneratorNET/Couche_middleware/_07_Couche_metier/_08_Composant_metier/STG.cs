@@ -72,6 +72,26 @@ namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 			}
 		}
 
+		public Hashtable files;
+
+		public object GetFiles(string key)
+		{
+			return this.files[key];
+		}
+
+		public void SetFiles(string key, object value)
+		{
+			if (this.files.ContainsKey(key))
+			{
+				this.files.Remove(key);
+				this.files.Add(key, value);
+			}
+			else
+			{
+				this.files.Add(key, value);
+			}
+		}
+
 		public STG()
 		{
 			this.status_op = false;
@@ -80,6 +100,7 @@ namespace Couche_middleware._07_Couche_metier._08_Composant_metier
 			this.tokenApp = "";
 			this.tokenUser = "";
 			this.data = new Hashtable();
+			this.files = new Hashtable();
 		}
 
 	}

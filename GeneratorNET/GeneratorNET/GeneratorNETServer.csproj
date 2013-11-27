@@ -41,9 +41,6 @@
     <ManifestKeyFile>test.pfx</ManifestKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common">
-      <HintPath>..\Common\bin\Debug\Common.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -63,7 +60,9 @@
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\CheckTokenUser.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\ConnectionUser.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\Dechiffrer.cs" />
+    <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\Stop.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_07_Controleur_workflow\UpdateTokenUser.cs" />
+    <Compile Include="Couche_middleware\_07_Couche_metier\_08_Composant_metier\GlobalVariables.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_08_Composant_metier\STG.cs" />
     <Compile Include="Couche_middleware\Host.cs" />
     <Compile Include="Couche_middleware\_07_Couche_metier\_09_Entite_mappage\User.cs" />
@@ -82,8 +81,6 @@
     <None Include="Service References\ReceptionSTG\GeneratorNET.ReceptionSTG.sendToQueueResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ReceptionSTG\ReceptionSTG.wsdl" />
-    <None Include="Service References\ReceptionSTG\ReceptionSTG.xsd" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -98,6 +95,10 @@
     <None Include="Service References\ReceptionSTG\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ReceptionSTG\ReceptionSTG1.wsdl" />
+    <None Include="Service References\ReceptionSTG\ReceptionSTG1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ReceptionSTG\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

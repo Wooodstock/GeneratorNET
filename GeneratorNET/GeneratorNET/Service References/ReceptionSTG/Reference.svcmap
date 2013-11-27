@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Hashtable" Category="Dictionary" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -19,11 +21,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:18765/ReceptionSTG/ReceptionSTG?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://172.16.254.126:18765/ReceptionSTG/ReceptionSTG?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ReceptionSTG.wsdl" MetadataType="Wsdl" ID="db6fd5f6-6fce-42f1-bb4e-7b5cc167f777" SourceId="1" SourceUrl="http://localhost:18765/ReceptionSTG/ReceptionSTG?WSDL" />
-    <MetadataFile FileName="ReceptionSTG.xsd" MetadataType="Schema" ID="704676f3-432d-459f-a677-3f9d9883f8b5" SourceId="1" SourceUrl="http://localhost:18765/ReceptionSTG/ReceptionSTG?xsd=1" />
+    <MetadataFile FileName="ReceptionSTG1.wsdl" MetadataType="Wsdl" ID="3d1428dc-1982-4b8c-b291-7cd07154cdbf" SourceId="1" SourceUrl="http://172.16.254.126:18765/ReceptionSTG/ReceptionSTG?WSDL" />
+    <MetadataFile FileName="ReceptionSTG1.xsd" MetadataType="Schema" ID="02e07693-be97-4d83-baf2-49a637183b51" SourceId="1" SourceUrl="http://172.16.254.126:18765/ReceptionSTG/ReceptionSTG?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
