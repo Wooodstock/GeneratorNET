@@ -57,11 +57,11 @@ namespace Generator
 
             if (NB_Files == 0 || NB_Files == 1)
             {
-                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichier sélectionné.";
+                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichier à importer.";
             }
             else
             {
-                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichier(s) sélectionné(s).";
+                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichiers à importer.";
             }
         }
 
@@ -111,6 +111,7 @@ namespace Generator
                 btn_Dechiffrer.Enabled = false;
                 btn_Delete_File.Enabled = false;
                 btn_Parcourir.Enabled = false;
+                btn_Annuler.Visible = true;
             }
 
             foreach (string filename in openFileDialog1.FileNames)
@@ -119,8 +120,6 @@ namespace Generator
             }
 
             user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Convert.ToInt16(txt_SampleSize.Text)));
-
-            btn_Annuler.Visible = true;
 
             double Bar_Percent_double = Math.Round(100 / (double)lst_Files.Items.Count, 0);
 

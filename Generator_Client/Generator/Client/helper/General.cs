@@ -11,12 +11,14 @@ using System.Windows.Forms;
 using Generator.Couche_middleware;
 using System.IO;
 using System.Collections;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Generator
 {
     public class General
     {
-        public string file_path;
+        public string pdf_path = @"C:\Generator\report.pdf";
 
         public void Leave()
         {
@@ -26,7 +28,7 @@ namespace Generator
             }
         }
 
-        public void sendEmail()
+        public void sendEmail(STG oSTG)
         {
             string Mail_From = "sendemailgenerator@yopmail.com";
             string Mail_To = "receiveemailgenerator@yopmail.com";
@@ -38,7 +40,9 @@ namespace Generator
 
             MailMessage oMail = new MailMessage(Mail_From, Mail_To, Mail_Subject, Mail_Body);
 
-            //oMail.Attachments.Add(new Attachment(@"C:\Generator\report.txt"));
+            createReport(oSTG);
+
+            oMail.Attachments.Add(new Attachment(pdf_path));
 
             try
             {
@@ -53,28 +57,36 @@ namespace Generator
 
         public void createReport(STG oSTG)
         {
-            if(File.Exists(@"C:\Generator\report.txt"))
+            if(File.Exists(pdf_path))
             {
-                File.Delete(@"C:\Generator\report.txt");
+                File.Delete(pdf_path);
             }
 
-            TextWriter Text_Writer = new StreamWriter(@"C:\Generator\report.txt");
+            Document pdf_document = new Document();
+            PdfWriter.GetInstance(pdf_document, new FileStream(pdf_path, FileMode.Create));
+            pdf_document.Open();
+            pdf_document.AddTitle("Rapport de déchiffrement");
+            pdf_document.Add(new Paragraph("Rapport de déchiffrement des fichiers par " + oSTG.data["login"] + "."));
+            pdf_document.Add(new Paragraph("Nombre de fichiers traités :" + oSTG.files.Count.ToString()));
 
-            Text_Writer.WriteLine("Rapport de déchiffrement des fichiers");
-            Text_Writer.WriteLine("");
-            Text_Writer.WriteLine("Nombre de fichiers traités :" + oSTG.files.Count.ToString());
-
+            PdfPTable pdf_table_files = new PdfPTable(3) ; 
+            
             foreach (DictionaryEntry key in oSTG.files)
             {
-                Text_Writer.WriteLine("");
-                Text_Writer.WriteLine("- " + key.Key + " :");
-                Text_Writer.WriteLine(key.Value);
-                Text_Writer.WriteLine("");
-            }
-                        
-            Text_Writer.Write("Adresse Email : " + oSTG.data["mail"]);
+                PdfPCell pdf_cell = new PdfPCell(new Paragraph("Fichiers déchiffrés"));
+                pdf_cell.Colspan = 3;
+                pdf_table_files.AddCell(pdf_cell);
 
-            Text_Writer.Close();
+                pdf_table_files.AddCell(System.IO.Path.GetFileNameWithoutExtension((string)key.Key));
+                pdf_table_files.AddCell("LOLOLOL");
+                pdf_table_files.AddCell((string)key.Value);
+            }
+   
+            pdf_document.Add(pdf_table_files);
+
+            pdf_document.Add(new Paragraph("Adresse(s) Email : " + oSTG.data["mail"]));
+
+            pdf_document.Close();
         }
     }
 }
