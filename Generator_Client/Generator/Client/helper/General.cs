@@ -32,7 +32,7 @@ namespace Generator
         {
             string Mail_From = "sendemailgenerator@yopmail.com";
             string Mail_To = "receiveemailgenerator@yopmail.com";
-            string Mail_Subject = "test"; //CUC.oSTG.TokenApp + " - Résultats du déchiffrement";
+            string Mail_Subject = "test"; //oSTG.TokenApp + " - Résultats du déchiffrement";
             string Mail_Body = "Ci-joint le rapport de déchiffrement des fichiers.";
 
             SmtpClient Mail_Smtp = new SmtpClient("smtp.yopmail.com");
