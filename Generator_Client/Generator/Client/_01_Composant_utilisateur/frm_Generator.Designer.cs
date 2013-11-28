@@ -39,7 +39,6 @@
             this.btn_Delete_File = new System.Windows.Forms.Button();
             this.lbl_NB_Files = new System.Windows.Forms.Label();
             this.btn_Ouvrir = new System.Windows.Forms.Button();
-            this.bar_FilesDone = new System.Windows.Forms.ProgressBar();
             this.btn_Annuler = new System.Windows.Forms.Button();
             this.lbl_SampleSize = new System.Windows.Forms.Label();
             this.txt_SampleSize = new System.Windows.Forms.TextBox();
@@ -71,7 +70,7 @@
             this.lst_Files.Location = new System.Drawing.Point(12, 272);
             this.lst_Files.Name = "lst_Files";
             this.lst_Files.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lst_Files.Size = new System.Drawing.Size(756, 212);
+            this.lst_Files.Size = new System.Drawing.Size(756, 238);
             this.lst_Files.TabIndex = 2;
             // 
             // label1
@@ -144,13 +143,6 @@
             this.btn_Ouvrir.UseVisualStyleBackColor = true;
             this.btn_Ouvrir.Click += new System.EventHandler(this.btn_Ouvrir_Click);
             // 
-            // bar_FilesDone
-            // 
-            this.bar_FilesDone.Location = new System.Drawing.Point(15, 493);
-            this.bar_FilesDone.Name = "bar_FilesDone";
-            this.bar_FilesDone.Size = new System.Drawing.Size(753, 23);
-            this.bar_FilesDone.TabIndex = 11;
-            // 
             // btn_Annuler
             // 
             this.btn_Annuler.Location = new System.Drawing.Point(612, 522);
@@ -188,7 +180,6 @@
             this.Controls.Add(this.txt_SampleSize);
             this.Controls.Add(this.lbl_SampleSize);
             this.Controls.Add(this.btn_Annuler);
-            this.Controls.Add(this.bar_FilesDone);
             this.Controls.Add(this.btn_Ouvrir);
             this.Controls.Add(this.lbl_NB_Files);
             this.Controls.Add(this.btn_Delete_File);
@@ -222,7 +213,6 @@
         private System.Windows.Forms.Button btn_Delete_File;
         private System.Windows.Forms.Label lbl_NB_Files;
         private System.Windows.Forms.Button btn_Ouvrir;
-        private System.Windows.Forms.ProgressBar bar_FilesDone;
         private System.Windows.Forms.Button btn_Annuler;
         private System.Windows.Forms.Label lbl_SampleSize;
         private System.Windows.Forms.TextBox txt_SampleSize;

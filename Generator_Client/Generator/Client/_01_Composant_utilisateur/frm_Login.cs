@@ -28,7 +28,7 @@ namespace Generator
             General_Functions.sendEmail();*/
         }
 
-        private void btn_Connection_Click(object sender, EventArgs e)
+        private async void btn_Connection_Click(object sender, EventArgs e)
         {
             oSTG = new STG();
             oSTG.data = new Hashtable();
@@ -42,7 +42,10 @@ namespace Generator
             }
             else
             {
-                if (user_CUC.sendMessage(user_CUT.login(oSTG, txt_Login.Text, txt_PWD.Text)).Status_op == true)
+                STG stg_logging = await user_CUC.sendMessage(user_CUT.login(oSTG, txt_Login.Text, txt_PWD.Text));
+                bool user_logged = stg_logging.Status_op;
+
+                if (user_logged)
                 {
                     Form form1 = new frm_Generator();
                     form1.Show();

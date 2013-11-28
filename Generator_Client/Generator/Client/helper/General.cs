@@ -18,7 +18,7 @@ namespace Generator
 {
     public class General
     {
-        public string pdf_path = @"C:\Generator\report.pdf";
+        public string pdf_path = @"C:\report.pdf";
 
         public void Leave()
         {
@@ -32,10 +32,10 @@ namespace Generator
         {
             string Mail_From = "sendemailgenerator@yopmail.com";
             string Mail_To = "receiveemailgenerator@yopmail.com";
-            string Mail_Subject = "test"; //oSTG.TokenApp + " - Résultats du déchiffrement";
+            string Mail_Subject = oSTG.TokenApp + " - Résultats du déchiffrement";
             string Mail_Body = "Ci-joint le rapport de déchiffrement des fichiers.";
 
-            SmtpClient Mail_Smtp = new SmtpClient("smtp.yopmail.com");
+            SmtpClient Mail_Smtp = new SmtpClient("smtp.live.com", 25);
             Mail_Smtp.Credentials = new NetworkCredential("", "");
 
             MailMessage oMail = new MailMessage(Mail_From, Mail_To, Mail_Subject, Mail_Body);
@@ -66,22 +66,42 @@ namespace Generator
             PdfWriter.GetInstance(pdf_document, new FileStream(pdf_path, FileMode.Create));
             pdf_document.Open();
             pdf_document.AddTitle("Rapport de déchiffrement");
-            pdf_document.Add(new Paragraph("Rapport de déchiffrement des fichiers par " + oSTG.data["login"] + "."));
+            pdf_document.Add(new Paragraph("Rapport de déchiffrement des fichiers édité par " + oSTG.data["login"] + "."));
             pdf_document.Add(new Paragraph("Nombre de fichiers traités :" + oSTG.files.Count.ToString()));
 
-            PdfPTable pdf_table_files = new PdfPTable(3) ; 
+            PdfPTable pdf_table_files = new PdfPTable(3);
+
+            PdfPCell pdf_cell_Dechiffre = new PdfPCell(new Paragraph("Fichiers déchiffrés"));
+            pdf_cell_Dechiffre.BackgroundColor = iTextSharp.text.BaseColor.DARK_GRAY;
+            pdf_cell_Dechiffre.Colspan = 3;
+
+            pdf_table_files.AddCell(pdf_cell_Dechiffre);
+
+            PdfPCell pdf_cell_Fichier = new PdfPCell(new Paragraph("Fichier"));
+            pdf_cell_Fichier.BackgroundColor = iTextSharp.text.BaseColor.LIGHT_GRAY;
+            pdf_table_files.AddCell(pdf_cell_Fichier);
+
+            pdf_table_files.AddCell(pdf_cell_Fichier);
+
+            PdfPCell pdf_cell_Cle = new PdfPCell(new Paragraph("Clé de déchiffrement"));
+            pdf_cell_Cle.BackgroundColor = iTextSharp.text.BaseColor.LIGHT_GRAY;
+            pdf_table_files.AddCell(pdf_cell_Cle);
+
+            pdf_table_files.AddCell(pdf_cell_Cle);
+
+            PdfPCell pdf_cell_Texte = new PdfPCell(new Paragraph("Texte"));
+            pdf_cell_Texte.BackgroundColor = iTextSharp.text.BaseColor.LIGHT_GRAY;
+            pdf_table_files.AddCell(pdf_cell_Texte);
+
+            pdf_table_files.AddCell(pdf_cell_Texte);
             
             foreach (DictionaryEntry key in oSTG.files)
             {
-                PdfPCell pdf_cell = new PdfPCell(new Paragraph("Fichiers déchiffrés"));
-                pdf_cell.Colspan = 3;
-                pdf_table_files.AddCell(pdf_cell);
-
-                pdf_table_files.AddCell(System.IO.Path.GetFileNameWithoutExtension((string)key.Key));
-                pdf_table_files.AddCell("LOLOLOL");
-                pdf_table_files.AddCell((string)key.Value);
+                pdf_table_files.AddCell(new Paragraph(System.IO.Path.GetFileNameWithoutExtension((string)key.Key)));
+                pdf_table_files.AddCell(new Paragraph("LOLOLOL"));
+                pdf_table_files.AddCell(new Paragraph((string)key.Value));
             }
-   
+
             pdf_document.Add(pdf_table_files);
 
             pdf_document.Add(new Paragraph("Adresse(s) Email : " + oSTG.data["mail"]));

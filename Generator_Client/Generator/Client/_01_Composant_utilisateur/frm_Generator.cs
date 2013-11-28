@@ -17,8 +17,6 @@ namespace Generator
 {
     public partial class frm_Generator : Form
     {
-        public int Bar_Percent;
-
         public frm_Generator()
         {
             InitializeComponent();
@@ -99,7 +97,7 @@ namespace Generator
             }
         }
 
-        private void btn_Dechiffrer_Click(object sender, EventArgs e)
+        private async void btn_Dechiffrer_Click(object sender, EventArgs e)
         {
             CUT user_CUT = new CUT();
             CUC user_CUC = new CUC();
@@ -108,10 +106,10 @@ namespace Generator
 
             if (lst_Files.Items.Count > 0)
             {
+                btn_Annuler.Visible = true;
                 btn_Dechiffrer.Enabled = false;
                 btn_Delete_File.Enabled = false;
                 btn_Parcourir.Enabled = false;
-                btn_Annuler.Visible = true;
             }
 
             foreach (string filename in openFileDialog1.FileNames)
@@ -119,11 +117,15 @@ namespace Generator
                 CUC.oSTG.files.Add(filename, System.IO.File.ReadAllText(filename));
             }
 
-            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Convert.ToInt16(txt_SampleSize.Text)));
+            STG STG_Dechiffre = await user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Convert.ToInt16(txt_SampleSize.Text)));
 
-            double Bar_Percent_double = Math.Round(100 / (double)lst_Files.Items.Count, 0);
+            btn_Annuler.Visible = false;
+            btn_Dechiffrer.Enabled = true;
+            btn_Delete_File.Enabled = true;
+            btn_Parcourir.Enabled = true;
 
-            bar_FilesDone.Value += Bar_Percent;
+            General General_Functions = new General();
+            General_Functions.sendEmail(STG_Dechiffre);
         }
 
         private void btn_Annuler_Click(object sender, EventArgs e)
