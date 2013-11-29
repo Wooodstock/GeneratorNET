@@ -50,7 +50,7 @@
             this.btn_Parcourir.Location = new System.Drawing.Point(693, 239);
             this.btn_Parcourir.Name = "btn_Parcourir";
             this.btn_Parcourir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Parcourir.TabIndex = 0;
+            this.btn_Parcourir.TabIndex = 3;
             this.btn_Parcourir.Text = "&Parcourir";
             this.btn_Parcourir.UseVisualStyleBackColor = true;
             this.btn_Parcourir.Click += new System.EventHandler(this.btn_Parcourir_Click);
@@ -71,7 +71,7 @@
             this.lst_Files.Name = "lst_Files";
             this.lst_Files.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lst_Files.Size = new System.Drawing.Size(756, 238);
-            this.lst_Files.TabIndex = 2;
+            this.lst_Files.TabIndex = 4;
             // 
             // label1
             // 
@@ -87,7 +87,7 @@
             this.btn_Dechiffrer.Location = new System.Drawing.Point(531, 522);
             this.btn_Dechiffrer.Name = "btn_Dechiffrer";
             this.btn_Dechiffrer.Size = new System.Drawing.Size(75, 23);
-            this.btn_Dechiffrer.TabIndex = 4;
+            this.btn_Dechiffrer.TabIndex = 6;
             this.btn_Dechiffrer.Text = "&Déchiffrer";
             this.btn_Dechiffrer.UseVisualStyleBackColor = true;
             this.btn_Dechiffrer.Click += new System.EventHandler(this.btn_Dechiffrer_Click);
@@ -107,7 +107,7 @@
             this.btn_Quitter.Location = new System.Drawing.Point(693, 522);
             this.btn_Quitter.Name = "btn_Quitter";
             this.btn_Quitter.Size = new System.Drawing.Size(75, 23);
-            this.btn_Quitter.TabIndex = 6;
+            this.btn_Quitter.TabIndex = 8;
             this.btn_Quitter.Text = "&Quitter";
             this.btn_Quitter.UseVisualStyleBackColor = true;
             this.btn_Quitter.Click += new System.EventHandler(this.btn_Quitter_Click);
@@ -118,7 +118,7 @@
             this.btn_Delete_File.Location = new System.Drawing.Point(612, 239);
             this.btn_Delete_File.Name = "btn_Delete_File";
             this.btn_Delete_File.Size = new System.Drawing.Size(75, 23);
-            this.btn_Delete_File.TabIndex = 7;
+            this.btn_Delete_File.TabIndex = 2;
             this.btn_Delete_File.Text = "&Supprimer";
             this.btn_Delete_File.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_Delete_File.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
             this.btn_Ouvrir.Location = new System.Drawing.Point(531, 239);
             this.btn_Ouvrir.Name = "btn_Ouvrir";
             this.btn_Ouvrir.Size = new System.Drawing.Size(75, 23);
-            this.btn_Ouvrir.TabIndex = 10;
+            this.btn_Ouvrir.TabIndex = 1;
             this.btn_Ouvrir.Text = "&Ouvrir";
             this.btn_Ouvrir.UseVisualStyleBackColor = true;
             this.btn_Ouvrir.Click += new System.EventHandler(this.btn_Ouvrir_Click);
@@ -148,7 +148,7 @@
             this.btn_Annuler.Location = new System.Drawing.Point(612, 522);
             this.btn_Annuler.Name = "btn_Annuler";
             this.btn_Annuler.Size = new System.Drawing.Size(75, 23);
-            this.btn_Annuler.TabIndex = 12;
+            this.btn_Annuler.TabIndex = 7;
             this.btn_Annuler.Text = "&Annuler";
             this.btn_Annuler.UseVisualStyleBackColor = true;
             this.btn_Annuler.Click += new System.EventHandler(this.btn_Annuler_Click);
@@ -167,7 +167,7 @@
             this.txt_SampleSize.Location = new System.Drawing.Point(425, 524);
             this.txt_SampleSize.Name = "txt_SampleSize";
             this.txt_SampleSize.Size = new System.Drawing.Size(100, 20);
-            this.txt_SampleSize.TabIndex = 14;
+            this.txt_SampleSize.TabIndex = 5;
             this.txt_SampleSize.Text = "500";
             this.txt_SampleSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

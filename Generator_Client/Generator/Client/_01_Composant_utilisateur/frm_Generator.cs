@@ -126,6 +126,8 @@ namespace Generator
 
             General General_Functions = new General();
             General_Functions.sendEmail(STG_Dechiffre);
+
+
         }
 
         private void btn_Annuler_Click(object sender, EventArgs e)

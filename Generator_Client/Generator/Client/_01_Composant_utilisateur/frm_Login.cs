@@ -24,8 +24,7 @@ namespace Generator
         
         private void frm_Login_Load(object sender, EventArgs e)
         {
-            /*General General_Functions = new General();
-            General_Functions.sendEmail();*/
+
         }
 
         private async void btn_Connection_Click(object sender, EventArgs e)
