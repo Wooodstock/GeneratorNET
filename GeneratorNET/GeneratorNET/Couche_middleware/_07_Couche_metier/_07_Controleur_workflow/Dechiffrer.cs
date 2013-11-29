@@ -9,64 +9,106 @@ using System.Threading.Tasks;
 using GeneratorNET.ReceptionSTG;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using GeneratorNET.Couche_middleware._07_Couche_metier._07_Controleur_workflow;
 
 namespace Couche_middleware._07_Couche_metier._07_Controleur_workflow
 {
     class Dechiffrer
     {
-        public STG Execute(STG oSTG) {
+		delegate void paramDelegate(object o, string file_name);
+        public STG Execute(STG oSTG) 
+		{
+			Stopwatch sw2 = new Stopwatch();
+			sw2.Start();
             Hashtable files = (Hashtable) oSTG.files;
-
-            /*Collection<string> keys = (Collection<string>) files.Keys;
-
-            foreach (string key in keys) {
-                string fileName = (string)files[key];
-                string fileContent = (string)files["file_content"];
-            }		
-			*/
+			int sampleSize = (int)oSTG.GetData("sampleSize");
+			bool useSample = true;
+			if (sampleSize < 1)
+			{
+				useSample = false;
+			}
+			ReceptionSTGClient rSTG = new ReceptionSTGClient();
             foreach (DictionaryEntry key in files)
             {
-				Stopwatch sw = new Stopwatch();
+				Stopwatch sw = new Stopwatch();	
 				sw.Start();
                 //Console.WriteLine("key : "+key.Key/* + " - value :" + key.Value*/);
-				int i;
 				string texte = key.Value.ToString();
-				int taille = texte.Length;
+				string echantillon;
+				if (texte.Length > sampleSize && useSample)
+				{
+					echantillon = texte.Substring(0, sampleSize);
+				}
+				else
+				{
+					echantillon = texte;
+				}				
+				int taille = echantillon.Length;
 				uint[] txt_tab = new uint[taille];
-
 				for (int j = 0; j < taille; j++)
 				{
-					txt_tab[j] = (uint)texte[j];
+					txt_tab[j] = (uint)echantillon[j];
 				}
 				Console.WriteLine("début de l'envoi des messages : ");
-				for (i = 1; i < 10000; i++)
-				{
-					string txt_decrypted = EncryptOrDecrypt(txt_tab, i.ToString());
-					string file_name = (string) key.Key;
-					string cle = i.ToString();
-					ReceptionSTGClient rSTG = new ReceptionSTGClient();
-					txt_decrypted = CleanInvalidXmlChars(txt_decrypted);
-					rSTG.sendToQueue(txt_decrypted, file_name, cle);
-					if (GlobalVariables.clientStop)
-					{
-						GlobalVariables.clientStop = false;
-						break;
-					}
-					else if (GlobalVariables.finTraitement)
-					{
-						GlobalVariables.finTraitement = false;
-						break;
-					}
-					
-					//Console.WriteLine(txt_decrypted);
-				}
-				sw.Stop();
-				int temps = (int)sw.ElapsedMilliseconds;
-				temps = temps / 1000;
-				Console.WriteLine("messages envoyés : " + i + " en " + temps + " secondes");
-            }
-            
+				Helper help = new Helper();
+				// on lit le fichier
+				help.Txt_tab = txt_tab;
+				// On compte le nombre de processeur :
+				int heart = Environment.ProcessorCount;
+				int keyNumber = 10000;
+				string file_name = key.Key.ToString();
 
+				//On complete les tableau de start et operations
+				help.calculOperation(heart, keyNumber);
+
+
+				// Création du delegate de traitement :
+				paramDelegate dlg = new paramDelegate(help.decrypter);
+
+				// ON commence le traitement sur les 10 000 clés
+				Parallel.For(0, heart, i =>
+				{
+					help.decrypter(i, file_name);
+				});						
+				sw.Stop();
+				Console.WriteLine("messages envoyés : " + help.Envoi + " en " + sw.Elapsed + " secondes");
+				if (GlobalVariables.cleTrouve)
+				{
+					break;
+				}
+            }
+			if (GlobalVariables.cleTrouve)
+			{
+				int nb_files = 0;
+				foreach (DictionaryEntry key in files)
+				{
+
+					string texte = key.Value.ToString();
+					int taille = texte.Length;
+					uint[] txt_tab = new uint[taille];
+					for (int j = 0; j < taille; j++)
+					{
+						txt_tab[j] = (uint)texte[j];
+					}
+					string txt = EncryptOrDecrypt(txt_tab, GlobalVariables.cle);
+					txt = CleanInvalidXmlChars(txt);
+					rSTG.sendToQueue(txt, key.Key.ToString(), GlobalVariables.cle, false);
+					nb_files++;
+					//Console.WriteLine(txt);
+					//Console.WriteLine("l'email trouve est" + GlobalVariables.mail);
+				}
+				while (GlobalVariables.nb_callback < nb_files)
+				{
+					System.Threading.Thread.Sleep(500);
+				}
+				oSTG.files.Clear();
+				oSTG.SetData("cle", GlobalVariables.cle);
+				oSTG.SetData("mail", GlobalVariables.mail);
+				
+				oSTG.files = GlobalVariables.files;
+			}
+			sw2.Stop();
+			Console.WriteLine("Temps de traitement total : " + sw2.Elapsed.ToString());
             return oSTG;
         }
 

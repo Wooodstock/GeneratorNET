@@ -13,12 +13,10 @@ namespace Couche_middleware._04_Composant_server
 	]
 	interface IServer
 	{
-		[
-			System.ServiceModel.OperationContract
-		]
+		[System.ServiceModel.OperationContract]
 		STG connection(STG oSTG);
 
         [System.ServiceModel.OperationContract]
-        void callback(string reponse);
+		void callback(string nomFichier, string cle, string mail, string texte,string ratio, bool echantillon);
 	}
 }

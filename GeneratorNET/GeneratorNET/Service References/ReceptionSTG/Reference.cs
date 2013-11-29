@@ -55,13 +55,17 @@ namespace GeneratorNET.ReceptionSTG {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string key;
         
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public bool sample;
+        
         public sendToQueueRequestBody() {
         }
         
-        public sendToQueueRequestBody(string message, string fileName, string key) {
+        public sendToQueueRequestBody(string message, string fileName, string key, bool sample) {
             this.message = message;
             this.fileName = fileName;
             this.key = key;
+            this.sample = sample;
         }
     }
     
@@ -124,12 +128,13 @@ namespace GeneratorNET.ReceptionSTG {
             return base.Channel.sendToQueue(request);
         }
         
-        public void sendToQueue(string message, string fileName, string key) {
+        public void sendToQueue(string message, string fileName, string key, bool sample) {
             GeneratorNET.ReceptionSTG.sendToQueueRequest inValue = new GeneratorNET.ReceptionSTG.sendToQueueRequest();
             inValue.Body = new GeneratorNET.ReceptionSTG.sendToQueueRequestBody();
             inValue.Body.message = message;
             inValue.Body.fileName = fileName;
             inValue.Body.key = key;
+            inValue.Body.sample = sample;
             GeneratorNET.ReceptionSTG.sendToQueueResponse retVal = ((GeneratorNET.ReceptionSTG.ReceptionSTG)(this)).sendToQueue(inValue);
         }
         
@@ -138,12 +143,13 @@ namespace GeneratorNET.ReceptionSTG {
             return base.Channel.sendToQueueAsync(request);
         }
         
-        public System.Threading.Tasks.Task<GeneratorNET.ReceptionSTG.sendToQueueResponse> sendToQueueAsync(string message, string fileName, string key) {
+        public System.Threading.Tasks.Task<GeneratorNET.ReceptionSTG.sendToQueueResponse> sendToQueueAsync(string message, string fileName, string key, bool sample) {
             GeneratorNET.ReceptionSTG.sendToQueueRequest inValue = new GeneratorNET.ReceptionSTG.sendToQueueRequest();
             inValue.Body = new GeneratorNET.ReceptionSTG.sendToQueueRequestBody();
             inValue.Body.message = message;
             inValue.Body.fileName = fileName;
             inValue.Body.key = key;
+            inValue.Body.sample = sample;
             return ((GeneratorNET.ReceptionSTG.ReceptionSTG)(this)).sendToQueueAsync(inValue);
         }
     }

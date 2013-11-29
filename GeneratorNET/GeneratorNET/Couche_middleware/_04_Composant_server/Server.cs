@@ -66,12 +66,50 @@ namespace Couche_middleware._04_Composant_server
 				oSTG.Info = "Le token de l'application n'est pas valide";
 			}
 			oSTG.SetData("sqldatareader", "");
+			oSTG.SetData("query", "");
+			try
+			{
+				//oSTG.files.Clear();
+			}
+			catch (Exception)
+			{
+				
+				
+			}
+			oSTG.SetData("mail", GlobalVariables.mail);
+			GlobalVariables.cleTrouve = false;
+
 			return oSTG;
 		}
 
-        public void callback(string reponse) 
+        public void callback(string nomFichier, string cle, string mail, string texte, string ratio, bool echantillon) 
 		{
-            Console.WriteLine("J'ai trouvé une solution !" + reponse);
+			//Console.WriteLine("test callback");
+			if (echantillon)
+			{
+
+				GlobalVariables.cleTrouve = true;
+				GlobalVariables.cle = cle;
+			}
+			else
+			{
+				GlobalVariables.nb_callback++;
+				GlobalVariables.nomFichier = nomFichier;
+				if (!string.IsNullOrEmpty(mail))
+				{
+					GlobalVariables.mail = mail;
+					Console.WriteLine("J'ai trouvé une solution ! le mail :" + GlobalVariables.mail);
+					GlobalVariables.SetData(nomFichier + ";" + ratio.Substring(0, 2), texte);
+				}				
+				//GlobalVariables.files.Clear();
+				//Console.WriteLine(ratio);
+				if (double.Parse(ratio) > 10)
+				{
+					GlobalVariables.SetData(nomFichier+";"+ratio.Substring(0,2), texte);
+				}
+				
+			}
+            
 			Couche_middleware._07_Couche_metier._08_Composant_metier.GlobalVariables.finTraitement = true;
         }
 	}
