@@ -47,7 +47,7 @@
             this.btn_Connection.Location = new System.Drawing.Point(348, 65);
             this.btn_Connection.Name = "btn_Connection";
             this.btn_Connection.Size = new System.Drawing.Size(75, 23);
-            this.btn_Connection.TabIndex = 0;
+            this.btn_Connection.TabIndex = 3;
             this.btn_Connection.Text = "&Connexion";
             this.btn_Connection.UseVisualStyleBackColor = true;
             this.btn_Connection.Click += new System.EventHandler(this.btn_Connection_Click);
@@ -119,7 +119,7 @@
             this.btn_Quitter.Location = new System.Drawing.Point(693, 515);
             this.btn_Quitter.Name = "btn_Quitter";
             this.btn_Quitter.Size = new System.Drawing.Size(75, 23);
-            this.btn_Quitter.TabIndex = 3;
+            this.btn_Quitter.TabIndex = 4;
             this.btn_Quitter.Text = "&Quitter";
             this.btn_Quitter.UseVisualStyleBackColor = true;
             this.btn_Quitter.Click += new System.EventHandler(this.btn_Quitter_Click);

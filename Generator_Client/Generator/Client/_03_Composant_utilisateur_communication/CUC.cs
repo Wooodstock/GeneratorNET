@@ -19,24 +19,21 @@ namespace Generator
 
         static public STG oSTG;
 
-        public STG sendMessage(STG oSTG)
+        public async Task<STG> sendMessage(STG oSTG)
         {
             oSTG.TokenApp = "Generator";
 
-            ChannelFactory<Couche_middleware.IcomposantService> myChannelFactory = null;
-            Couche_middleware.IcomposantService myService;
-            
             try
             {
-                myChannelFactory = new ChannelFactory<IcomposantService>("NetTcpBinding_IcomposantService");
-                myService = myChannelFactory.CreateChannel();
-                oSTG = myService.connection(oSTG);
+                Couche_middleware.IcomposantService myService = new Couche_middleware.IcomposantServiceClient();
+                Task<STG> Temp_Task = myService.connectionAsync(oSTG);
+                oSTG = await Temp_Task;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK);
             }
-
+            
             CUC.oSTG = oSTG;
 
             return oSTG;

@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +25,8 @@ namespace Generator
         private void frm_Generator_Load(object sender, EventArgs e)
         {
             frm_Login.ActiveForm.Hide();
+
+            btn_Annuler.Visible = false;
 
             Refresh_NB_Files();
         }
@@ -52,11 +55,11 @@ namespace Generator
 
             if (NB_Files == 0 || NB_Files == 1)
             {
-                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichier sélectionné.";
+                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichier à importer.";
             }
             else
             {
-                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichier(s) sélectionné(s).";
+                lbl_NB_Files.Text = Convert.ToString(NB_Files) + " fichiers à importer.";
             }
         }
 
@@ -94,20 +97,45 @@ namespace Generator
             }
         }
 
-        private void btn_Dechiffrer_Click(object sender, EventArgs e)
+        private async void btn_Dechiffrer_Click(object sender, EventArgs e)
         {
             CUT user_CUT = new CUT();
             CUC user_CUC = new CUC();
 
             CUC.oSTG.files = new Hashtable();
 
+            if (lst_Files.Items.Count > 0)
+            {
+                btn_Annuler.Visible = true;
+                btn_Dechiffrer.Enabled = false;
+                btn_Delete_File.Enabled = false;
+                btn_Parcourir.Enabled = false;
+            }
+
             foreach (string filename in openFileDialog1.FileNames)
             {
                 CUC.oSTG.files.Add(filename, System.IO.File.ReadAllText(filename));
             }
-            
-            user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG));
+
+            STG STG_Dechiffre = await user_CUC.sendMessage(user_CUT.dechiffrer(CUC.oSTG, Convert.ToInt16(txt_SampleSize.Text)));
+
+            btn_Annuler.Visible = false;
+            btn_Dechiffrer.Enabled = true;
+            btn_Delete_File.Enabled = true;
+            btn_Parcourir.Enabled = true;
+
+            General General_Functions = new General();
+            General_Functions.sendEmail(STG_Dechiffre);
+
+
         }
 
+        private void btn_Annuler_Click(object sender, EventArgs e)
+        {
+            btn_Annuler.Visible = false;
+            btn_Dechiffrer.Enabled = true;
+            btn_Delete_File.Enabled = true;
+            btn_Parcourir.Enabled = true;
+        }
     }
 }

@@ -24,9 +24,11 @@ namespace Generator
             return oSTG;
         }
 
-        public STG dechiffrer(STG oSTG)
+        public STG dechiffrer(STG oSTG, int oSampleSize)
         {
             oSTG.Operationname = "GpcsDecrypt_Dechiffrer";
+            oSTG.data.Remove("sampleSize");
+            oSTG.data.Add("sampleSize", oSampleSize);
 
             return oSTG;
         }
